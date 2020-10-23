@@ -2029,7 +2029,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   // Crear la Function data()
   data: function data() {
@@ -59677,65 +59676,8 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row justify-content-center" },
-    [
-      _c(
-        "div",
-        { staticClass: "order-2 order-md-1 col-md-4 lista-de-tareas" },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _vm._l(_vm.listaTareas, function(tarea, index) {
-            return _c("tarea-component", {
-              key: tarea.id,
-              attrs: { mitarea: tarea },
-              on: {
-                update: function($event) {
-                  var i = arguments.length,
-                    argsArray = Array(i)
-                  while (i--) argsArray[i] = arguments[i]
-                  return _vm.updateTarea.apply(
-                    void 0,
-                    [index].concat(argsArray)
-                  )
-                },
-                delete: function($event) {
-                  return _vm.deleteTarea(index)
-                }
-              }
-            })
-          })
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _c("crear-component", { on: { new: _vm.addTarea } })
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h3", [
-      _vm._v("Lista de Tareas "),
-      _c("small", { staticClass: "badge" }, [
-        _c("a", { attrs: { href: "/tareas" } }, [_vm._v("ver lista completa")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
+var render = function () {}
+var staticRenderFns = []
 
 
 
