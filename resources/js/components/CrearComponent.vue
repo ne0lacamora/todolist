@@ -59,10 +59,6 @@
             }
         },
 
-        // mounted() {
-        //     console.log('Componente Crear tarea montado.');
-        // },
-
         methods: {
             newTarea() {
                 // Parametros (datos) a ser obtenidos

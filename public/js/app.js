@@ -1967,9 +1967,6 @@ __webpack_require__.r(__webpack_exports__);
       estado: ''
     };
   },
-  // mounted() {
-  //     console.log('Componente Crear tarea montado.');
-  // },
   methods: {
     newTarea: function newTarea() {
       var _this = this;
@@ -2056,78 +2053,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteTarea: function deleteTarea(index) {
       this.listaTareas.splice(index, 1);
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaginaTareaComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PaginaTareaComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// Moment Js (Date Formatting)
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['mitarea'],
-  data: function data() {
-    return {
-      // Retornar el formato de fecha de moment
-      moment: moment__WEBPACK_IMPORTED_MODULE_0___default.a,
-      // Determinar si el componente se esta editando o no
-      editMode: false
-    };
-  },
-  // mounted() {
-  //     console.log('Componente Lista de Tareas montado.')
-  // },
-  methods: {
-    // Al hacer click editar el objecto creado
-    onClickEdit: function onClickEdit() {
-      this.editMode = true;
-    },
-    // Actualizar el componente al ser guardado
-    onClickUpdate: function onClickUpdate() {
-      var _this = this;
-
-      var params = {
-        nombre: this.mitarea.nombre,
-        descripcion: this.mitarea.descripcion,
-        estado: this.mitarea.estado
-      };
-      axios.put("/tareas/".concat(this.mitarea.id), params).then(function (response) {
-        // Finalizamos el modo de edición
-        _this.editMode = false;
-        var tarea = response.data; // Emitimos el evento update (actualizar) -> Pasamos la informacion editada (campo)
-
-        _this.$emit('update', tarea);
-      });
-    },
-    // Al hacer click eliminar el objecto creado
-    onClickDelete: function onClickDelete() {
-      var _this2 = this;
-
-      axios["delete"]("/tareas/".concat(this.mitarea.id)).then(function () {
-        _this2.$emit('delete');
-      });
     }
   }
 });
@@ -59676,39 +59601,50 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
-var staticRenderFns = []
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaginaTareaComponent.vue?vue&type=template&id=92302fe6&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PaginaTareaComponent.vue?vue&type=template&id=92302fe6& ***!
-  \***********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid" }, [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-4" }, [
-          _vm._v(
-            "\n                " + _vm._s(_vm.mitarea.nombre) + "\n            "
-          )
-        ])
-      ])
-    ])
-  ])
+  return _c(
+    "div",
+    { staticClass: "row justify-content-center" },
+    [
+      _c(
+        "div",
+        { staticClass: "order-2 order-md-1 col-md-4 lista-de-tareas" },
+        [
+          _c("h3", [_vm._v("Lista de Tareas")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _vm._l(_vm.listaTareas, function(tarea, index) {
+            return _c("tarea-component", {
+              key: tarea.id,
+              attrs: { mitarea: tarea },
+              on: {
+                update: function($event) {
+                  var i = arguments.length,
+                    argsArray = Array(i)
+                  while (i--) argsArray[i] = arguments[i]
+                  return _vm.updateTarea.apply(
+                    void 0,
+                    [index].concat(argsArray)
+                  )
+                },
+                delete: function($event) {
+                  return _vm.deleteTarea(index)
+                }
+              }
+            })
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("crear-component", { on: { new: _vm.addTarea } })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -72103,8 +72039,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('mis-tareas-component', __webpack_require__(/*! ./components/MisTareasComponent.vue */ "./resources/js/components/MisTareasComponent.vue")["default"]);
 Vue.component('crear-component', __webpack_require__(/*! ./components/CrearComponent.vue */ "./resources/js/components/CrearComponent.vue")["default"]);
 Vue.component('tarea-component', __webpack_require__(/*! ./components/TareaComponent.vue */ "./resources/js/components/TareaComponent.vue")["default"]); // Vue.component('notification-component', require('./components/NotificationComponent.vue').default);
+// Vue.component('pagina-tarea-component', require('./components/PaginaTareaComponent.vue').default);
 
-Vue.component('pagina-tarea-component', __webpack_require__(/*! ./components/PaginaTareaComponent.vue */ "./resources/js/components/PaginaTareaComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -72295,75 +72231,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MisTareasComponent_vue_vue_type_template_id_07f6dfdf___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MisTareasComponent_vue_vue_type_template_id_07f6dfdf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/PaginaTareaComponent.vue":
-/*!**********************************************************!*\
-  !*** ./resources/js/components/PaginaTareaComponent.vue ***!
-  \**********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PaginaTareaComponent_vue_vue_type_template_id_92302fe6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PaginaTareaComponent.vue?vue&type=template&id=92302fe6& */ "./resources/js/components/PaginaTareaComponent.vue?vue&type=template&id=92302fe6&");
-/* harmony import */ var _PaginaTareaComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PaginaTareaComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/PaginaTareaComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _PaginaTareaComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _PaginaTareaComponent_vue_vue_type_template_id_92302fe6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _PaginaTareaComponent_vue_vue_type_template_id_92302fe6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/PaginaTareaComponent.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/PaginaTareaComponent.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/components/PaginaTareaComponent.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginaTareaComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PaginaTareaComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaginaTareaComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginaTareaComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/PaginaTareaComponent.vue?vue&type=template&id=92302fe6&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/PaginaTareaComponent.vue?vue&type=template&id=92302fe6& ***!
-  \*****************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginaTareaComponent_vue_vue_type_template_id_92302fe6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PaginaTareaComponent.vue?vue&type=template&id=92302fe6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaginaTareaComponent.vue?vue&type=template&id=92302fe6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginaTareaComponent_vue_vue_type_template_id_92302fe6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PaginaTareaComponent_vue_vue_type_template_id_92302fe6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
