@@ -63,7 +63,7 @@
                     estado: this.mitarea.estado
                 };
 
-                axios.put(`/crear-tarea/${this.mitarea.id}`, params).then((response) => {
+                axios.put(`/crear/${this.mitarea.id}`, params).then((response) => {
                     // Finalizamos el modo de edición
                     this.editMode = false;
                     const tarea = response.data;
@@ -73,7 +73,7 @@
             },
             // Al hacer click eliminar el objecto creado
             onClickDelete() {
-                axios.delete(`/crear-tarea/${this.mitarea.id}`).then(() => {
+                axios.delete(`/crear/${this.mitarea.id}`).then(() => {
                     this.$emit('delete');
                 });
             },

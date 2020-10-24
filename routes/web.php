@@ -22,5 +22,9 @@ Auth::routes();
 // Tareas Lista Individual
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/crear-tarea', function() {
+    return view('crear-tarea');
+})->name('crear-tarea');
+
 // ...
 Route::apiResource('crear', 'CrearTareaController');

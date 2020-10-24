@@ -41,7 +41,7 @@
                     </div>
                     <!-- Crear tarea -->
                     <div class="mt-3 form-group">
-                        <button type="submit" class="btn btn-success" v-on:submit.prevent="sendMessage()">Crear Tarea</button>
+                        <button type="submit" class="btn btn-success">Crear Tarea</button>
                     </div>
                 </form>
             </div>
@@ -74,7 +74,7 @@
                 this.estado = '';
 
                 // Metodo post para enviar los datos y entonces generar/obtener una respuesta
-                axios.post('/crear-tarea', params).then((response) => {
+                axios.post('/crear', params).then((response) => {
                     // Obtenemos el objecto a partir de la respuesta del servidor
                     const tarea = response.data;
 
