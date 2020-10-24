@@ -50,10 +50,6 @@
             };
         },
 
-        // mounted() {
-        //     console.log('Componente Lista de Tareas montado.')
-        // },
-
         methods: {
             // Al hacer click editar el objecto creado
             onClickEdit() {
@@ -67,7 +63,7 @@
                     estado: this.mitarea.estado
                 };
 
-                axios.put(`/tareas/${this.mitarea.id}`, params).then((response) => {
+                axios.put(`/crear-tarea/${this.mitarea.id}`, params).then((response) => {
                     // Finalizamos el modo de edición
                     this.editMode = false;
                     const tarea = response.data;
@@ -77,7 +73,7 @@
             },
             // Al hacer click eliminar el objecto creado
             onClickDelete() {
-                axios.delete(`/tareas/${this.mitarea.id}`).then(() => {
+                axios.delete(`/crear-tarea/${this.mitarea.id}`).then(() => {
                     this.$emit('delete');
                 });
             },

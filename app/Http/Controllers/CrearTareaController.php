@@ -6,7 +6,7 @@ use App\Tarea;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class TareaController extends Controller
+class CrearTareaController extends Controller
 {
 
     /**
@@ -42,7 +42,7 @@ class TareaController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('home')->withErrors($validator)->withInput();
+            return redirect('crear-tarea')->withErrors($validator)->withInput();
         }
 
         $tarea = new Tarea();
@@ -54,6 +54,7 @@ class TareaController extends Controller
         $tarea->save();
 
         return response()->json($tarea);
+        // return view('crear-tarea');
     }
 
     /**

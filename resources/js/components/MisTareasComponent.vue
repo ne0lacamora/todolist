@@ -2,7 +2,7 @@
 	<div class="row justify-content-center">
         <!-- Lista de tareas -->
         <div class="order-2 order-md-1 col-md-4 lista-de-tareas">
-            <h3>Lista de Tareas</h3>
+            <h3>Tareas <small><a href="home">Ver todas</a></small></h3>
             <hr>
             <tarea-component
             v-for="(tarea, index) in listaTareas"
@@ -30,7 +30,7 @@
 
         // Function
         mounted() {
-            axios.get('/tareas').then((response) => {
+            axios.get('/crear-tarea').then((response) => {
                 this.listaTareas = response.data;
             });
         },

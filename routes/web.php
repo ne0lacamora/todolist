@@ -19,11 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Formulario de tarea
+// Tareas Lista Individual
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Tareas generales
-Route::get('/mis-tareas', 'TareaIndividualController@index')->name('mis-tareas');
-
 // ...
-Route::apiResource('tareas', 'TareaController');
+Route::apiResource('crear', 'CrearTareaController');

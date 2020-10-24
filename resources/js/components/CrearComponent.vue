@@ -74,7 +74,7 @@
                 this.estado = '';
 
                 // Metodo post para enviar los datos y entonces generar/obtener una respuesta
-                axios.post('/tareas', params).then((response) => {
+                axios.post('/crear-tarea', params).then((response) => {
                     // Obtenemos el objecto a partir de la respuesta del servidor
                     const tarea = response.data;
 
