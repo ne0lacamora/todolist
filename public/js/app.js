@@ -59402,7 +59402,8 @@ var render = function() {
                     id: "",
                     cols: "30",
                     rows: "5",
-                    placeholder: "Descripción acerca de la Nueva Tarea"
+                    placeholder: "Descripción acerca de la Nueva Tarea",
+                    required: ""
                   },
                   domProps: { value: _vm.descripcion },
                   on: {

@@ -37,7 +37,7 @@ class TareaController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
-            'descripcion' => 'nullable',
+            'descripcion' => 'required',
             'estado' => 'required',
         ]);
 
@@ -62,14 +62,14 @@ class TareaController extends Controller
      * @param  \Illuminate\Validation\Validator  $validator
      * @return void
      */
-    public function withValidator($validator)
-    {
-        $validator->after(function ($validator) {
-            if ($this->somethingElseIsInvalid()) {
-                $validator->errors()->add('field', 'Something is wrong with this field!');
-            }
-        });
-    }
+    // public function withValidator($validator)
+    // {
+    //     $validator->after(function ($validator) {
+    //         if ($this->somethingElseIsInvalid()) {
+    //             $validator->errors()->add('field', 'Algo esta mal con éste campo!');
+    //         }
+    //     });
+    // }
 
     /**
      * Update the specified resource in storage.

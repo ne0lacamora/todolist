@@ -28,11 +28,6 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="mr-auto navbar-nav">
-
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="ml-auto navbar-nav">
                         <!-- Authentication Links -->
@@ -52,7 +47,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="{{ route('home') }}" class="dropdown-item">Tareas</a>
+                                <a href="{{ route('mis-tareas') }}" class="dropdown-item">Mis Tareas</a>
+                                <a href="{{ route('home') }}" class="dropdown-item">Crear Tarea</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

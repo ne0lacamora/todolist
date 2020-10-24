@@ -15,7 +15,7 @@
                     <!-- Descripción de la tarea -->
                     <div class="form-group">
                         <label for="descripcion">Descripción de la Tarea</label>
-                        <textarea name="descripcion" id="" cols="30" rows="5" class="form-control" placeholder="Descripción acerca de la Nueva Tarea" v-model="descripcion"></textarea>
+                        <textarea name="descripcion" id="" cols="30" rows="5" class="form-control" placeholder="Descripción acerca de la Nueva Tarea" v-model="descripcion" required></textarea>
                     </div>
                     <!-- Estado de la tarea -->
                     <div class="form-group">
