@@ -59402,8 +59402,7 @@ var render = function() {
                     id: "",
                     cols: "30",
                     rows: "5",
-                    placeholder: "Descripción acerca de la Nueva Tarea",
-                    required: ""
+                    placeholder: "Descripción acerca de la Nueva Tarea"
                   },
                   domProps: { value: _vm.descripcion },
                   on: {
@@ -59554,7 +59553,22 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(1)
+              _c("div", { staticClass: "mt-3 form-group" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "submit" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.sendMessage()
+                      }
+                    }
+                  },
+                  [_vm._v("Crear Tarea")]
+                )
+              ])
             ]
           )
         ])
@@ -59569,18 +59583,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _c("p", [_vm._v("Estado de la tarea")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mt-3 form-group" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-success", attrs: { type: "submit" } },
-        [_vm._v("Crear Tarea")]
-      )
     ])
   }
 ]
@@ -59668,15 +59670,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "mt-3 card" }, [
-    _c("div", { staticClass: "card-header" }, [
-      _c("h4", [_vm._v(_vm._s(_vm.mitarea.nombre))])
+  return _c("div", { staticClass: "mt-3 card border-dark" }, [
+    _c("div", { staticClass: "card-header bg-dark" }, [
+      _c("h4", { staticClass: "text-white" }, [
+        _vm._v(_vm._s(_vm.mitarea.nombre))
+      ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _c("p", { staticClass: "font-weight-bold" }, [
-        _vm._v("# "),
-        _c("span", { staticClass: "font-weight-light" }, [
+    _c("div", { staticClass: "bg-white card-body" }, [
+      _c("p", { staticClass: "font-weight-light" }, [
+        _vm._v("Taréa Número: "),
+        _c("span", { staticClass: "font-weight-bold" }, [
           _vm._v(_vm._s(_vm.mitarea.id))
         ])
       ]),
@@ -59788,7 +59792,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-footer" }, [
+    _c("div", { staticClass: "card-footer bg-dark" }, [
       _c("form", { staticClass: "form-inline", attrs: { action: "#" } }, [
         _vm.editMode
           ? _c(
@@ -72039,7 +72043,6 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('mis-tareas-component', __webpack_require__(/*! ./components/MisTareasComponent.vue */ "./resources/js/components/MisTareasComponent.vue")["default"]);
 Vue.component('crear-component', __webpack_require__(/*! ./components/CrearComponent.vue */ "./resources/js/components/CrearComponent.vue")["default"]);
 Vue.component('tarea-component', __webpack_require__(/*! ./components/TareaComponent.vue */ "./resources/js/components/TareaComponent.vue")["default"]); // Vue.component('notification-component', require('./components/NotificationComponent.vue').default);
-// Vue.component('pagina-tarea-component', require('./components/PaginaTareaComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

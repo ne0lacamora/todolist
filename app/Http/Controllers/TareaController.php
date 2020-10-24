@@ -53,7 +53,22 @@ class TareaController extends Controller
         $tarea->user_id = auth()->id();
         $tarea->save();
 
-        return $tarea;
+        return response()->json($tarea);
+    }
+
+    /**
+     * Configure the validator instance.
+     *
+     * @param  \Illuminate\Validation\Validator  $validator
+     * @return void
+     */
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if ($this->somethingElseIsInvalid()) {
+                $validator->errors()->add('field', 'Something is wrong with this field!');
+            }
+        });
     }
 
     /**

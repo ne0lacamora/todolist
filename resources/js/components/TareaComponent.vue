@@ -1,11 +1,11 @@
 <template>
-    <div class="mt-3 card">
-        <div class="card-header">
-            <h4>{{ mitarea.nombre }}</h4>
+    <div class="mt-3 card border-dark">
+        <div class="card-header bg-dark">
+            <h4 class="text-white">{{ mitarea.nombre }}</h4>
         </div>
-        <div class="card-body">
+        <div class="bg-white card-body">
             <!-- ID (número de la tarea) -->
-            <p class="font-weight-bold"># <span class="font-weight-light">{{ mitarea.id  }}</span></p>
+            <p class="font-weight-light">Taréa Número: <span class="font-weight-bold">{{ mitarea.id  }}</span></p>
             <hr>
             <!-- Nombre de la tarea -->
             <input type="text" class="form-control" v-if="editMode" v-model="mitarea.nombre">
@@ -25,7 +25,7 @@
             <p class="font-weight-bold">Tarea creada el<br><small class="badge badge-pill badge-secondary">{{ moment(mitarea.created_at).format("ddd DD / MMM / YYYY [a las] LTS") }}</small></p>
             <p class="font-weight-bold">Ultima vez modificada<br><small class="badge badge-pill badge-secondary">{{ moment(mitarea.updated_at).format("ddd DD / MMM / YYYY [a las] LTS") }}</small></p>
         </div>
-        <div class="card-footer">
+        <div class="card-footer bg-dark">
             <!-- Acciones -->
             <form action="#" class="form-inline">
                 <button v-if="editMode" class="mr-1 btn btn-success" v-on:click.prevent="onClickUpdate()">Guardar Cambios</button>

@@ -15,7 +15,7 @@
                     <!-- Descripción de la tarea -->
                     <div class="form-group">
                         <label for="descripcion">Descripción de la Tarea</label>
-                        <textarea name="descripcion" id="" cols="30" rows="5" class="form-control" placeholder="Descripción acerca de la Nueva Tarea" v-model="descripcion" required></textarea>
+                        <textarea name="descripcion" id="" cols="30" rows="5" class="form-control" placeholder="Descripción acerca de la Nueva Tarea" v-model="descripcion"></textarea>
                     </div>
                     <!-- Estado de la tarea -->
                     <div class="form-group">
@@ -41,7 +41,7 @@
                     </div>
                     <!-- Crear tarea -->
                     <div class="mt-3 form-group">
-                        <button type="submit" class="btn btn-success">Crear Tarea</button>
+                        <button type="submit" class="btn btn-success" v-on:submit.prevent="sendMessage()">Crear Tarea</button>
                     </div>
                 </form>
             </div>

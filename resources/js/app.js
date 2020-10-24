@@ -23,7 +23,6 @@ Vue.component('mis-tareas-component', require('./components/MisTareasComponent.v
 Vue.component('crear-component', require('./components/CrearComponent.vue').default);
 Vue.component('tarea-component', require('./components/TareaComponent.vue').default);
 // Vue.component('notification-component', require('./components/NotificationComponent.vue').default);
-// Vue.component('pagina-tarea-component', require('./components/PaginaTareaComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
