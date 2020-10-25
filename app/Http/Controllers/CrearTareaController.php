@@ -24,6 +24,7 @@ class CrearTareaController extends Controller
      */
     public function index()
     {
+        // Here we return the User ID
         return Tarea::where('user_id', auth()->id())->get();
     }
 
@@ -45,8 +46,16 @@ class CrearTareaController extends Controller
             return redirect('crear-tarea')->withErrors($validator)->withInput();
         }
 
+        // Creamos una nueva tarea
         $tarea = new Tarea();
 
+        /**
+         * Hacemos una solicitud de los campos, y guardamos sus datos.
+         * El user_id es el usuario el cual esta creando su nueva tarea, de esta manera cada usuario conserva su propia tarea
+         * y no puede acceder a ella y/o verla si no esta autenticado.
+         * Cada usuario posee sus tareas en particular.
+         * nadie mas puede verlas.
+         */
         $tarea->nombre = $request->nombre;
         $tarea->descripcion = $request->descripcion;
         $tarea->estado = $request->estado;
