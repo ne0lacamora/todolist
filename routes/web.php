@@ -13,18 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Index
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Auth Routes
 Auth::routes();
 
 // Tareas Lista Individual
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Vista para crear tarea
 Route::get('/crear-tarea', function() {
     return view('crear-tarea');
-})->name('crear-tarea');
+})->name('crear-tarea')->middleware('auth');
 
-// ...
+// API (CRUD)
 Route::apiResource('crear', 'CrearTareaController');
