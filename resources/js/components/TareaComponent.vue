@@ -1,6 +1,6 @@
 <template>
-    <div class="mt-3 card border-dark">
-        <div class="card-header bg-dark">
+    <div class="mt-3 card border-success">
+        <div class="card-header bg-success">
             <h4 class="text-white">{{ mitarea.nombre }}</h4>
         </div>
         <div class="bg-white card-body">
@@ -25,7 +25,7 @@
             <p class="font-weight-bold">Tarea creada el<br><small class="badge badge-pill badge-secondary">{{ moment(mitarea.created_at).format("ddd DD / MMM / YYYY [a las] LTS") }}</small></p>
             <p class="font-weight-bold">Ultima vez modificada<br><small class="badge badge-pill badge-secondary">{{ moment(mitarea.updated_at).format("ddd DD / MMM / YYYY [a las] LTS") }}</small></p>
         </div>
-        <div class="card-footer bg-dark">
+        <div class="card-footer bg-success">
             <!-- Acciones -->
             <form action="#" class="form-inline">
                 <button v-if="editMode" class="mr-1 btn btn-success" v-on:click.prevent="onClickUpdate()">Guardar Cambios</button>
@@ -41,6 +41,7 @@
 
     export default {
         props: ['mitarea'],
+
         data() {
             return {
                 // Retornar el formato de fecha de moment

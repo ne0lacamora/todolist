@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('mis-tareas-component', require('./components/MisTareasComponent.vue').default);
 Vue.component('crear-component', require('./components/CrearComponent.vue').default);
 Vue.component('tarea-component', require('./components/TareaComponent.vue').default);
+Vue.component('single-list-component', require('./components/SingleListComponent.vue').default);
 Vue.component('single-component', require('./components/SingleComponent.vue').default);
 
 /**
