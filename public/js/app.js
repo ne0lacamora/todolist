@@ -2178,6 +2178,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   // Crear la Function data()
   data: function data() {
@@ -59762,7 +59765,7 @@ var render = function() {
         "div",
         { staticClass: "order-2 order-md-1 col-md-4 lista-de-tareas" },
         [
-          _c("h3", [_vm._v("Tareas")]),
+          _c("h3", [_vm._v("Tareas Recientemente Creadas")]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
@@ -60020,27 +60023,40 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "row" },
-    _vm._l(_vm.listaTareas, function(single, index) {
-      return _c("single-component", {
-        key: single.id,
-        attrs: { mysingle: single },
-        on: {
-          update: function($event) {
-            var i = arguments.length,
-              argsArray = Array(i)
-            while (i--) argsArray[i] = arguments[i]
-            return _vm.updateTarea.apply(void 0, [index].concat(argsArray))
-          },
-          delete: function($event) {
-            return _vm.deleteTarea(index)
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.listaTareas, function(single, index) {
+        return _c("single-component", {
+          key: single.id,
+          attrs: { mysingle: single },
+          on: {
+            update: function($event) {
+              var i = arguments.length,
+                argsArray = Array(i)
+              while (i--) argsArray[i] = arguments[i]
+              return _vm.updateTarea.apply(void 0, [index].concat(argsArray))
+            },
+            delete: function($event) {
+              return _vm.deleteTarea(index)
+            }
           }
-        }
+        })
       })
-    }),
-    1
+    ],
+    2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mb-4 col-sm-12" }, [
+      _c("h2", [_vm._v("Lista de Tareas")])
+    ])
+  }
+]
 render._withStripped = true
 
 

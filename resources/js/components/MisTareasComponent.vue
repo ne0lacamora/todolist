@@ -2,7 +2,7 @@
 	<div class="row justify-content-center">
         <!-- Lista de tareas -->
         <div class="order-2 order-md-1 col-md-4 lista-de-tareas">
-            <h3>Tareas</h3>
+            <h3>Tareas Recientemente Creadas</h3>
             <hr>
             <tarea-component
             v-for="(tarea, index) in listaTareas"
