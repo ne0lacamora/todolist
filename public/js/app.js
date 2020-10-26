@@ -2108,8 +2108,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 // Moment Js (Date Formatting)
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2225,8 +2223,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
 //
 //
 //
@@ -59944,49 +59940,47 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-footer bg-success" }, [
-        _c("form", { staticClass: "form-inline", attrs: { action: "#" } }, [
-          _vm.editMode
-            ? _c(
-                "button",
-                {
-                  staticClass: "mr-1 btn btn-success",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.onClickUpdate()
-                    }
+        _vm.editMode
+          ? _c(
+              "button",
+              {
+                staticClass: "mr-1 btn btn-success",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.onClickUpdate()
                   }
-                },
-                [_vm._v("Guardar Cambios")]
-              )
-            : _c(
-                "button",
-                {
-                  staticClass: "mr-1 btn btn-warning",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.onClickEdit()
-                    }
-                  }
-                },
-                [_vm._v("Editar")]
-              ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "ml-1 btn btn-danger",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.onClickDelete()
                 }
+              },
+              [_vm._v("Guardar Cambios")]
+            )
+          : _c(
+              "button",
+              {
+                staticClass: "mr-1 btn btn-warning",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.onClickEdit()
+                  }
+                }
+              },
+              [_vm._v("Editar")]
+            ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "ml-1 btn btn-danger",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.onClickDelete()
               }
-            },
-            [_vm._v("Eliminar")]
-          )
-        ])
+            }
+          },
+          [_vm._v("Eliminar")]
+        )
       ])
     ])
   ])
@@ -60201,49 +60195,47 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-footer bg-success" }, [
-      _c("form", { staticClass: "form-inline", attrs: { action: "#" } }, [
-        _vm.editMode
-          ? _c(
-              "button",
-              {
-                staticClass: "mr-1 btn btn-success",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.onClickUpdate()
-                  }
+      _vm.editMode
+        ? _c(
+            "button",
+            {
+              staticClass: "mr-1 btn btn-success",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.onClickUpdate()
                 }
-              },
-              [_vm._v("Guardar Cambios")]
-            )
-          : _c(
-              "button",
-              {
-                staticClass: "mr-1 btn btn-warning",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.onClickEdit()
-                  }
-                }
-              },
-              [_vm._v("Editar")]
-            ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "ml-1 btn btn-danger",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.onClickDelete()
               }
+            },
+            [_vm._v("Guardar Cambios")]
+          )
+        : _c(
+            "button",
+            {
+              staticClass: "mr-1 btn btn-warning",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.onClickEdit()
+                }
+              }
+            },
+            [_vm._v("Editar")]
+          ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "ml-1 btn btn-danger",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.onClickDelete()
             }
-          },
-          [_vm._v("Eliminar")]
-        )
-      ])
+          }
+        },
+        [_vm._v("Eliminar")]
+      )
     ])
   ])
 }

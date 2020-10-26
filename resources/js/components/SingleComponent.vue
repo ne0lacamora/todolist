@@ -29,11 +29,9 @@
             </div>
             <div class="card-footer bg-success">
                 <!-- Acciones -->
-                <form action="#" class="form-inline">
-                    <button v-if="editMode" class="mr-1 btn btn-success" v-on:click.prevent="onClickUpdate()">Guardar Cambios</button>
-                    <button v-else class="mr-1 btn btn-warning" v-on:click.prevent="onClickEdit()">Editar</button>
-                    <button class="ml-1 btn btn-danger" v-on:click.prevent="onClickDelete()">Eliminar</button>
-                </form>
+                <button v-if="editMode" class="mr-1 btn btn-success" v-on:click.prevent="onClickUpdate()">Guardar Cambios</button>
+                <button v-else class="mr-1 btn btn-warning" v-on:click.prevent="onClickEdit()">Editar</button>
+                <button class="ml-1 btn btn-danger" v-on:click.prevent="onClickDelete()">Eliminar</button>
             </div>
         </div>
     </div>
