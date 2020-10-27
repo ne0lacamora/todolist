@@ -24,6 +24,8 @@ Vue.component('crear-component', require('./components/CrearComponent.vue').defa
 Vue.component('tarea-component', require('./components/TareaComponent.vue').default);
 Vue.component('single-list-component', require('./components/SingleListComponent.vue').default);
 Vue.component('single-component', require('./components/SingleComponent.vue').default);
+Vue.component('index-component', require('./components/IndexComponent.vue').default);
+Vue.component('user-single-component', require('./components/UserSingleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
