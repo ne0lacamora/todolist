@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Index
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index')->name('index');
 
 // Auth Routes
 Auth::routes();

@@ -2014,9 +2014,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   // Creating data function
   data: function data() {
@@ -2030,13 +2027,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/crear').then(function (response) {
+    axios.get('/index').then(function (response) {
       _this.listaTareas = response.data;
     });
-  } // Methods
-  // methods: {
-  // }
-
+  }
 });
 
 /***/ }),
@@ -2113,6 +2107,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+//
 //
 //
 //
@@ -2359,6 +2354,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+//
 //
 //
 //
@@ -59946,7 +59942,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-sm-4" }, [
+  return _c("div", { staticClass: "col-sm-4 mt-3" }, [
     _c("div", { staticClass: "card border-success" }, [
       _c("div", { staticClass: "card-header bg-success" }, [
         _c("h4", { staticClass: "text-white" }, [
@@ -60398,7 +60394,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-sm-4" }, [
+  return _c("div", { staticClass: "col-sm-4 mt-3" }, [
     _c("div", { staticClass: "card border-success" }, [
       _c("div", { staticClass: "card-header bg-success" }, [
         _c("h4", { staticClass: "text-white" }, [
