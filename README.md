@@ -5,3 +5,5 @@
 <p>npm install</p>
 <p>and for last but not least</p>
 <p>npm run dev</p>
+<p>Important Laravel command (Security Reasons)</p>
+## php artisan key:generate --ansi
