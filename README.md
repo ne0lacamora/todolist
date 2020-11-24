@@ -6,4 +6,4 @@
 <p>and for last but not least</p>
 <p>npm run dev</p>
 <p>Important Laravel command (Security Reasons)</p>
-<h1>php artisan key:generate --ansi</h1>
+<h6>php artisan key:generate --ansi</h6>
