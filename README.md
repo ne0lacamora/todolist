@@ -1,7 +1,7 @@
 ## New Version Coming Soon
 ## To make it work run:
-## composer install
+<p>composer install</p>
 <p>Then</p>
-## npm install
+<p>npm install</p>
 <p>and for last but not least</p>
-## npm run dev
+<p>npm run dev</p>
