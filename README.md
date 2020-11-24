@@ -1,9 +1,9 @@
 ## New Version Coming Soon
 ## To make it work run:
-<p>composer install</p>
+<h6>composer install</h6>
 <p>then</p>
-<p>npm install</p>
+<h6>npm install</h6>
 <p>and for last but not least</p>
-<p>npm run dev</p>
+<h6>npm run dev</h6>
 <p>Important Laravel command (Security Reasons)</p>
 <h6>php artisan key:generate --ansi</h6>
