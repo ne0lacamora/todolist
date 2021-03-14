@@ -1,7 +1,7 @@
 ## Nueva version muy pronto
 <p>Este proyecto esta basado en un TODO (Tarea para hacer)</p>
 <p>Incluye sistema de inicio de sesion, cada tarea se asigna automaticamente al usuario que la creo</p>
-## Para hacer que funcione (realizar los siguientes pasos)
+<p>Para hacer que funcione (realizar los siguientes pasos)</p>
 <h6>composer install</h6>
 <p>Luego</p>
 <h6>npm install</h6>
