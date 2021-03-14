@@ -1,4 +1,5 @@
 ## Nueva version muy pronto
+## Esta aplicación esta creada con Laravel v7 y VueJS v2+
 <p>Este proyecto esta basado en un TODO (Tarea para hacer)</p>
 <p>Incluye sistema de inicio de sesion, cada tarea se asigna automaticamente al usuario que la creo</p>
 <p>Para hacer que funcione (realizar los siguientes pasos)</p>
