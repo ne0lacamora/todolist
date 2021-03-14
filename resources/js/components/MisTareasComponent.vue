@@ -30,7 +30,7 @@
 
         // Function
         mounted() {
-            axios.get('/crear').then((response) => {
+            axios.get("https://jsonplaceholder.typicode.com/todos/").then((response) => {
                 this.listaTareas = response.data;
             });
         },

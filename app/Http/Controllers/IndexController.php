@@ -21,6 +21,6 @@ class IndexController extends Controller
         // Fetch all the users's todos from the db
         $usuariosTarea = Tarea::where('id', '>', 0)->get();
         // Return the index page with the todos
-        return view('welcome')->with($usuariosTarea);
+        return view('welcome')->with(['usuariosTarea' => $usuariosTarea]);
     }
 }

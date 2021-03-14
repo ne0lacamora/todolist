@@ -1,26 +1,22 @@
 <template>
     <div class="mt-3 card border-success">
         <div class="card-header bg-success">
-            <h4 class="text-white">{{ mitarea.nombre }}</h4>
+            <h4 class="text-white">{{ mitarea.title }}</h4>
         </div>
         <div class="bg-white card-body">
             <!-- ID (número de la tarea) -->
             <p class="font-weight-light">Taréa Número: <span class="font-weight-bold">{{ mitarea.id  }}</span></p>
             <hr>
             <!-- Nombre de la tarea -->
-            <input type="text" class="form-control" v-if="editMode" v-model="mitarea.nombre">
-            <p class="font-weight-bold" v-else>{{ mitarea.nombre }}</p>
-            <!-- Descripción -->
-            <textarea v-if="editMode" cols="30" rows="5" class="mt-2 form-control" v-model="mitarea.descripcion"></textarea>
-            <p v-else class="font-weight-light">{{ mitarea.descripcion }}</p>
+            <input type="text" class="form-control" v-if="editMode" v-model="mitarea.title">
+            <p class="font-weight-bold" v-else>{{ mitarea.title }}</p>
             <div class="clearfix">
                 <hr>
             </div>
             <!-- Estados -->
             <p class="mt-1 font-weight-bold">Estado de la Tarea</p>
-            <p class="text-success text-uppercase font-weight-bold" v-if="mitarea.estado === 'activa'">{{ mitarea.estado }}</p>
-            <p class="text-warning text-uppercase font-weight-bold" v-else-if="mitarea.estado === 'pendiente'">{{ mitarea.estado }}</p>
-            <p class="text-danger text-uppercase font-weight-bold" v-else>{{ mitarea.estado }}</p>
+            <p class="text-success text-uppercase font-weight-bold" v-if="mitarea.completed === true">Realizada</p>
+            <p class="text-danger text-uppercase font-weight-bold" v-else>No Realizada</p>
             <!-- Fecha de creación y actualización-->
             <p class="font-weight-bold">Tarea creada el<br><small class="badge badge-pill badge-secondary">{{ moment(mitarea.created_at).format("ddd DD / MMM / YYYY [a las] LTS") }}</small></p>
             <p class="font-weight-bold">Ultima vez modificada<br><small class="badge badge-pill badge-secondary">{{ moment(mitarea.updated_at).format("ddd DD / MMM / YYYY [a las] LTS") }}</small></p>
@@ -57,14 +53,14 @@
             // Actualizar el componente al ser guardado
             onClickUpdate() {
                 const params = {
-                    nombre: this.mitarea.nombre,
-                    descripcion: this.mitarea.descripcion,
-                    estado: this.mitarea.estado
+                    title: this.mitarea.title,
+                    completed: this.mitarea.completed
                 };
 
-                axios.put(`/crear/${this.mitarea.id}`, params).then((response) => {
+                axios.put(`https://jsonplaceholder.typicode.com/todos/${this.mitarea.id}`, params).then((response) => {
                     // Finalizamos el modo de edición
                     this.editMode = false;
+                    // Data
                     const tarea = response.data;
                     // Emitimos el evento update (actualizar) -> Pasamos la informacion editada (campo)
                     this.$emit('update', tarea);
@@ -72,7 +68,7 @@
             },
             // Al hacer click eliminar el objecto creado
             onClickDelete() {
-                axios.delete(`/crear/${this.mitarea.id}`).then(() => {
+                axios.delete(`https://jsonplaceholder.typicode.com/todos/${this.mitarea.id}`).then(() => {
                     this.$emit('delete');
                 });
             },
