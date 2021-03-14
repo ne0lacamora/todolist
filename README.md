@@ -1,9 +1,11 @@
-## New Version Coming Soon
-## To make it work run:
+## Nueva version muy pronto
+<p>Este proyecto esta basado en un TODO (Tarea para hacer)</p>
+<p>Incluye sistema de inicio de sesion, cada tarea se asigna automaticamente al usuario que la creo</p>
+## Para hacer que funcione (realizar los siguientes pasos)
 <h6>composer install</h6>
-<p>then</p>
+<p>Luego</p>
 <h6>npm install</h6>
-<p>and for last but not least</p>
+<p>Y por ultimo pero no menos importante</p>
 <h6>npm run dev</h6>
-<p>Important Laravel command (Security Reasons)</p>
+<p>Comando de seguridad importante (Razones de seguridad)</p>
 <h6>php artisan key:generate --ansi</h6>
