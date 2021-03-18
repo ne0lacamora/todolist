@@ -9,8 +9,8 @@
                     <input type="hidden" name="_token" :value="csrf">
                     <!-- Nombre de la tarea -->
                     <div class="form-group">
-                        <label for="title">Nombre de la Tarea</label>
-                        <input type="text" name="title" class="form-control" placeholder="Ej: Estudiar VueJs" v-model="title" required>
+                        <label for="nombre">Nombre de la Tarea</label>
+                        <input type="text" name="nombre" class="form-control" placeholder="Ej: Estudiar VueJs" v-model="nombre" required>
                     </div>
                     <!-- Estado de la tarea -->
                     <div class="form-group">
@@ -18,16 +18,21 @@
                     </div>
                     <!-- Estado Activa -->
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="true" name="completed" class="custom-control-input" value="true" v-model="completed" required>
-                        <label class="custom-control-label" for="true">Realizada (Completa)</label>
+                        <input type="radio" id="activa" name="estado" class="custom-control-input" value="activa" v-model="estado" required>
+                        <label class="custom-control-label" for="activa">Activa</label>
+                    </div>
+                    <!-- Estado Pendiente -->
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="pendiente" name="estado" class="custom-control-input" value="pendiente" v-model="estado" required>
+                        <label class="custom-control-label" for="pendiente">Pendiente</label>
                     </div>
                     <!-- Estado Inactiva -->
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="false" name="completed" class="custom-control-input"  value="false" v-model="completed" required>
-                        <label class="custom-control-label" for="false">No Realizada (No Completa)</label>
+                        <input type="radio" id="inactiva" name="estado" class="custom-control-input"  value="inactiva" v-model="estado" required>
+                        <label class="custom-control-label" for="inactiva">Inactiva</label>
                     </div>
                     <div class="mt-3 form-group">
-                        <span class="text-capitalize">Estado seleccionado: {{ completed }}</span>
+                        <span class="text-capitalize">Estado seleccionado: {{ estado }}</span>
                     </div>
                     <!-- Crear tarea -->
                     <div class="mt-3 form-group">
@@ -43,8 +48,9 @@
         data() {
             return {
                 csrf: document.head.querySelector('meta[name="csrf-token"]').content,
-                title: '',
-                completed: null
+                nombre: "",
+                // responsable: "",
+                estado: ""
             }
         },
 
@@ -52,21 +58,21 @@
             newTarea() {
                 // Parametros (datos) a ser obtenidos
                 const params = {
-                    title: this.title,
-                    completed: this.completed,
+                    nombre: this.nombre,
+                    estado: this.estado,
                 };
 
                 // Vaciamos los campos al enviar los valores
-                this.title = '';
-                this.completed = null;
+                this.nombre = "";
+                this.estado = "";
 
                 // Metodo post para enviar los datos y entonces generar/obtener una respuesta
-                axios.post('https://jsonplaceholder.typicode.com/todos/', params).then((response) => {
+                axios.post("/crear", params).then((response) => {
                     // Obtenemos el objecto a partir de la respuesta del servidor
                     const tarea = response.data;
 
                     // Emitir (evento new) de la nueva tarea
-                    this.$emit('new', tarea);
+                    this.$emit("new", tarea);
 
                     // Notificación acerca del estado (resultado) de la tarea
                 })

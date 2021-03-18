@@ -14,7 +14,7 @@
         },
 
         mounted() {
-            axios.get("https://jsonplaceholder.typicode.com/todos/").then((response) => {
+            axios.get("/crear").then((response) => {
                 this.listaTareas = response.data;
             });
         }

@@ -1995,12 +1995,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       csrf: document.head.querySelector('meta[name="csrf-token"]').content,
-      title: '',
-      completed: null
+      nombre: "",
+      // responsable: "",
+      estado: ""
     };
   },
   methods: {
@@ -2009,18 +2015,18 @@ __webpack_require__.r(__webpack_exports__);
 
       // Parametros (datos) a ser obtenidos
       var params = {
-        title: this.title,
-        completed: this.completed
+        nombre: this.nombre,
+        estado: this.estado
       }; // Vaciamos los campos al enviar los valores
 
-      this.title = '';
-      this.completed = null; // Metodo post para enviar los datos y entonces generar/obtener una respuesta
+      this.nombre = "";
+      this.estado = ""; // Metodo post para enviar los datos y entonces generar/obtener una respuesta
 
-      axios.post('https://jsonplaceholder.typicode.com/todos/', params).then(function (response) {
+      axios.post("/crear", params).then(function (response) {
         // Obtenemos el objecto a partir de la respuesta del servidor
         var tarea = response.data; // Emitir (evento new) de la nueva tarea
 
-        _this.$emit('new', tarea); // Notificación acerca del estado (resultado) de la tarea
+        _this.$emit("new", tarea); // Notificación acerca del estado (resultado) de la tarea
 
       })["catch"](function (error) {
         // Notificación acerca del estado (resultado) de la tarea
@@ -2057,7 +2063,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("https://jsonplaceholder.typicode.com/todos/").then(function (response) {
+    axios.get("/crear").then(function (response) {
       _this.listaTareas = response.data;
     });
   }
@@ -2106,7 +2112,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("https://jsonplaceholder.typicode.com/todos/").then(function (response) {
+    axios.get("/crear").then(function (response) {
       _this.listaTareas = response.data;
     });
   },
@@ -2194,10 +2200,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var params = {
-        nombre: this.mysingle.title,
-        estado: this.mysingle.completed
+        nombre: this.mysingle.nombre,
+        estado: this.mysingle.estado
       };
-      axios.put("https://jsonplaceholder.typicode.com/todos/".concat(this.mysingle.id), params).then(function (response) {
+      axios.put("/crear/".concat(this.mysingle.id), params).then(function (response) {
         // Finalizamos el modo de edición
         _this.editMode = false; // Obtenemos la data de la respuesta
 
@@ -2210,7 +2216,7 @@ __webpack_require__.r(__webpack_exports__);
     onClickDelete: function onClickDelete() {
       var _this2 = this;
 
-      axios["delete"]("https://jsonplaceholder.typicode.com/todos/".concat(this.mysingle.id)).then(function () {
+      axios["delete"]("/crear/".concat(this.mysingle.id)).then(function () {
         _this2.$emit('delete');
       });
     }
@@ -2255,7 +2261,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("https://jsonplaceholder.typicode.com/todos/").then(function (response) {
+    axios.get("/crear").then(function (response) {
       _this.listaTareas = response.data;
     });
   },
@@ -2317,6 +2323,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // Moment Js (Date Formatting)
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2339,10 +2361,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var params = {
-        title: this.mitarea.title,
-        completed: this.mitarea.completed
+        nombre: this.mitarea.nombre,
+        estado: this.mitarea.estado
       };
-      axios.put("https://jsonplaceholder.typicode.com/todos/".concat(this.mitarea.id), params).then(function (response) {
+      axios.put("/crear/".concat(this.mitarea.id), params).then(function (response) {
         // Finalizamos el modo de edición
         _this.editMode = false; // Data
 
@@ -2355,7 +2377,7 @@ __webpack_require__.r(__webpack_exports__);
     onClickDelete: function onClickDelete() {
       var _this2 = this;
 
-      axios["delete"]("https://jsonplaceholder.typicode.com/todos/".concat(this.mitarea.id)).then(function () {
+      axios["delete"]("/crear/".concat(this.mitarea.id)).then(function () {
         _this2.$emit('delete');
       });
     }
@@ -59608,7 +59630,7 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "title" } }, [
+                _c("label", { attrs: { for: "nombre" } }, [
                   _vm._v("Nombre de la Tarea")
                 ]),
                 _vm._v(" "),
@@ -59617,24 +59639,24 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.title,
-                      expression: "title"
+                      value: _vm.nombre,
+                      expression: "nombre"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
                     type: "text",
-                    name: "title",
+                    name: "nombre",
                     placeholder: "Ej: Estudiar VueJs",
                     required: ""
                   },
-                  domProps: { value: _vm.title },
+                  domProps: { value: _vm.nombre },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.title = $event.target.value
+                      _vm.nombre = $event.target.value
                     }
                   }
                 })
@@ -59654,22 +59676,22 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.completed,
-                        expression: "completed"
+                        value: _vm.estado,
+                        expression: "estado"
                       }
                     ],
                     staticClass: "custom-control-input",
                     attrs: {
                       type: "radio",
-                      id: "true",
-                      name: "completed",
-                      value: "true",
+                      id: "activa",
+                      name: "estado",
+                      value: "activa",
                       required: ""
                     },
-                    domProps: { checked: _vm._q(_vm.completed, "true") },
+                    domProps: { checked: _vm._q(_vm.estado, "activa") },
                     on: {
                       change: function($event) {
-                        _vm.completed = "true"
+                        _vm.estado = "activa"
                       }
                     }
                   }),
@@ -59678,9 +59700,9 @@ var render = function() {
                     "label",
                     {
                       staticClass: "custom-control-label",
-                      attrs: { for: "true" }
+                      attrs: { for: "activa" }
                     },
-                    [_vm._v("Realizada (Completa)")]
+                    [_vm._v("Activa")]
                   )
                 ]
               ),
@@ -59697,22 +59719,22 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.completed,
-                        expression: "completed"
+                        value: _vm.estado,
+                        expression: "estado"
                       }
                     ],
                     staticClass: "custom-control-input",
                     attrs: {
                       type: "radio",
-                      id: "false",
-                      name: "completed",
-                      value: "false",
+                      id: "pendiente",
+                      name: "estado",
+                      value: "pendiente",
                       required: ""
                     },
-                    domProps: { checked: _vm._q(_vm.completed, "false") },
+                    domProps: { checked: _vm._q(_vm.estado, "pendiente") },
                     on: {
                       change: function($event) {
-                        _vm.completed = "false"
+                        _vm.estado = "pendiente"
                       }
                     }
                   }),
@@ -59721,16 +59743,59 @@ var render = function() {
                     "label",
                     {
                       staticClass: "custom-control-label",
-                      attrs: { for: "false" }
+                      attrs: { for: "pendiente" }
                     },
-                    [_vm._v("No Realizada (No Completa)")]
+                    [_vm._v("Pendiente")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "custom-control custom-radio custom-control-inline"
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.estado,
+                        expression: "estado"
+                      }
+                    ],
+                    staticClass: "custom-control-input",
+                    attrs: {
+                      type: "radio",
+                      id: "inactiva",
+                      name: "estado",
+                      value: "inactiva",
+                      required: ""
+                    },
+                    domProps: { checked: _vm._q(_vm.estado, "inactiva") },
+                    on: {
+                      change: function($event) {
+                        _vm.estado = "inactiva"
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "custom-control-label",
+                      attrs: { for: "inactiva" }
+                    },
+                    [_vm._v("Inactiva")]
                   )
                 ]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "mt-3 form-group" }, [
                 _c("span", { staticClass: "text-capitalize" }, [
-                  _vm._v("Estado seleccionado: " + _vm._s(_vm.completed))
+                  _vm._v("Estado seleccionado: " + _vm._s(_vm.estado))
                 ])
               ]),
               _vm._v(" "),
@@ -59882,11 +59947,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-sm-4 mt-3" }, [
+  return _c("div", { staticClass: "col-sm-3 col-md-4 col-lg-4 mt-3" }, [
     _c("div", { staticClass: "card border-success" }, [
       _c("div", { staticClass: "card-header bg-success" }, [
-        _c("h4", { staticClass: "text-white" }, [
-          _vm._v(_vm._s(_vm.mysingle.title))
+        _c("h4", { staticClass: "text-white mb-0" }, [
+          _vm._v(_vm._s(_vm.mysingle.nombre))
         ])
       ]),
       _vm._v(" "),
@@ -59894,7 +59959,7 @@ var render = function() {
         _c("p", { staticClass: "font-weight-light" }, [
           _vm._v("ID Usuario: "),
           _c("span", { staticClass: "font-weight-bold" }, [
-            _vm._v(_vm._s(_vm.mysingle.userId))
+            _vm._v(_vm._s(_vm.mysingle.user_id))
           ])
         ]),
         _vm._v(" "),
@@ -59913,40 +59978,49 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.mysingle.title,
-                  expression: "mysingle.title"
+                  value: _vm.mysingle.nombre,
+                  expression: "mysingle.nombre"
                 }
               ],
               staticClass: "form-control",
               attrs: { type: "text" },
-              domProps: { value: _vm.mysingle.title },
+              domProps: { value: _vm.mysingle.nombre },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.mysingle, "title", $event.target.value)
+                  _vm.$set(_vm.mysingle, "nombre", $event.target.value)
                 }
               }
             })
           : _c("p", { staticClass: "font-weight-bold" }, [
-              _vm._v(_vm._s(_vm.mysingle.title))
+              _c("span", { staticClass: "font-weight-light" }, [
+                _vm._v("Titulo:")
+              ]),
+              _vm._v(" " + _vm._s(_vm.mysingle.nombre))
             ]),
         _vm._v(" "),
         _c("p", { staticClass: "mt-1 font-weight-bold" }, [
           _vm._v("Estado de la Tarea")
         ]),
         _vm._v(" "),
-        _vm.mysingle.completed === true
+        _vm.mysingle.estado === "activa"
           ? _c(
               "p",
               { staticClass: "text-success text-uppercase font-weight-bold" },
-              [_vm._v("Realizada")]
+              [_vm._v("Activa")]
+            )
+          : _vm.mysingle.estado === "pendiente"
+          ? _c(
+              "p",
+              { staticClass: "text-warning text-uppercase font-weight-bold" },
+              [_vm._v(_vm._s(_vm.mysingle.estado))]
             )
           : _c(
               "p",
               { staticClass: "text-danger text-uppercase font-weight-bold" },
-              [_vm._v("No Realizada")]
+              [_vm._v("Inactiva")]
             ),
         _vm._v(" "),
         _c("p", { staticClass: "font-weight-bold" }, [
@@ -60106,8 +60180,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "mt-3 card border-success" }, [
     _c("div", { staticClass: "card-header bg-success" }, [
-      _c("h4", { staticClass: "text-white" }, [
-        _vm._v(_vm._s(_vm.mitarea.title))
+      _c("h4", { staticClass: "text-white mb-0" }, [
+        _vm._v(_vm._s(_vm.mitarea.nombre))
       ])
     ]),
     _vm._v(" "),
@@ -60127,24 +60201,24 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.mitarea.title,
-                expression: "mitarea.title"
+                value: _vm.mitarea.nombre,
+                expression: "mitarea.nombre"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text" },
-            domProps: { value: _vm.mitarea.title },
+            domProps: { value: _vm.mitarea.nombre },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.mitarea, "title", $event.target.value)
+                _vm.$set(_vm.mitarea, "nombre", $event.target.value)
               }
             }
           })
         : _c("p", { staticClass: "font-weight-bold" }, [
-            _vm._v(_vm._s(_vm.mitarea.title))
+            _vm._v(_vm._s(_vm.mitarea.nombre))
           ]),
       _vm._v(" "),
       _vm._m(0),
@@ -60153,19 +60227,154 @@ var render = function() {
         _vm._v("Estado de la Tarea")
       ]),
       _vm._v(" "),
-      _vm.mitarea.completed === true
+      _vm.editMode
+        ? _c(
+            "div",
+            {
+              staticClass: "custom-control custom-radio custom-control-inline"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mitarea.estado,
+                    expression: "mitarea.estado"
+                  }
+                ],
+                staticClass: "custom-control-input",
+                attrs: {
+                  type: "radio",
+                  id: "tarea_activa",
+                  name: "mitarea_estado",
+                  value: "activa"
+                },
+                domProps: { checked: _vm._q(_vm.mitarea.estado, "activa") },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.mitarea, "estado", "activa")
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "custom-control-label",
+                  attrs: { for: "tarea_activa" }
+                },
+                [_vm._v("Activa")]
+              )
+            ]
+          )
+        : _vm.mitarea.estado === "activa"
         ? _c(
             "p",
             { staticClass: "text-success text-uppercase font-weight-bold" },
-            [_vm._v("Realizada")]
+            [_vm._v(_vm._s(_vm.mitarea.estado))]
           )
-        : _c(
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.editMode
+        ? _c(
+            "div",
+            {
+              staticClass: "custom-control custom-radio custom-control-inline"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mitarea.estado,
+                    expression: "mitarea.estado"
+                  }
+                ],
+                staticClass: "custom-control-input",
+                attrs: {
+                  type: "radio",
+                  id: "tarea_pendiente",
+                  name: "mitarea_estado",
+                  value: "pendiente"
+                },
+                domProps: { checked: _vm._q(_vm.mitarea.estado, "pendiente") },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.mitarea, "estado", "pendiente")
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "custom-control-label",
+                  attrs: { for: "tarea_pendiente" }
+                },
+                [_vm._v("Pendiente")]
+              )
+            ]
+          )
+        : _vm.mitarea.estado === "pendiente"
+        ? _c(
+            "p",
+            { staticClass: "text-warning text-uppercase font-weight-bold" },
+            [_vm._v(_vm._s(_vm.mitarea.estado))]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.editMode
+        ? _c(
+            "div",
+            {
+              staticClass: "custom-control custom-radio custom-control-inline"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mitarea.estado,
+                    expression: "mitarea.estado"
+                  }
+                ],
+                staticClass: "custom-control-input",
+                attrs: {
+                  type: "radio",
+                  id: "tarea_inactiva",
+                  name: "mitarea_estado",
+                  value: "inactiva"
+                },
+                domProps: { checked: _vm._q(_vm.mitarea.estado, "inactiva") },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.mitarea, "estado", "inactiva")
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "custom-control-label",
+                  attrs: { for: "tarea_inactiva" }
+                },
+                [_vm._v("Inactiva")]
+              )
+            ]
+          )
+        : _vm.mitarea.estado === "inactiva"
+        ? _c(
             "p",
             { staticClass: "text-danger text-uppercase font-weight-bold" },
-            [_vm._v("No Realizada")]
-          ),
+            [_vm._v(_vm._s(_vm.mitarea.estado))]
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _c("p", { staticClass: "font-weight-bold" }, [
+      _c("p", { staticClass: "font-weight-bold mt-3" }, [
         _vm._v("Tarea creada el"),
         _c("br"),
         _c("small", { staticClass: "badge badge-pill badge-secondary" }, [
@@ -60180,7 +60389,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "font-weight-bold" }, [
-        _vm._v("Ultima vez modificada"),
+        _vm._v("Última vez modificada"),
         _c("br"),
         _c("small", { staticClass: "badge badge-pill badge-secondary" }, [
           _vm._v(
@@ -60199,7 +60408,7 @@ var render = function() {
         ? _c(
             "button",
             {
-              staticClass: "mr-1 btn btn-success",
+              staticClass: "mr-1 btn btn-warning",
               on: {
                 click: function($event) {
                   $event.preventDefault()

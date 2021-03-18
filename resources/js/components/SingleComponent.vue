@@ -1,24 +1,24 @@
 <template>
 <!-- Single Tarea -->
-<div class="col-sm-4 mt-3">
+<div class="col-sm-3 col-md-4 col-lg-4 mt-3">
     <div class="card border-success">
         <div class="card-header bg-success">
-            <h4 class="text-white">{{ mysingle.title }}</h4>
+            <h4 class="text-white mb-0">{{ mysingle.nombre }}</h4>
         </div>
         <div class="bg-white card-body">
             <!-- ID (Usuario) -->
-            <p class="font-weight-light">ID Usuario: <span class="font-weight-bold">{{ mysingle.userId  }}</span></p>
+            <p class="font-weight-light">ID Usuario: <span class="font-weight-bold">{{ mysingle.user_id  }}</span></p>
             <hr>
             <!-- ID (número de la tarea) -->
             <p class="font-weight-light">Taréa Número: <span class="font-weight-bold">{{ mysingle.id  }}</span></p>
             <!-- Nombre de la tarea -->
-            <input type="text" class="form-control" v-if="editMode" v-model="mysingle.title">
-            <p class="font-weight-bold" v-else>{{ mysingle.title }}</p>
+            <input type="text" class="form-control" v-if="editMode" v-model="mysingle.nombre">
+            <p class="font-weight-bold" v-else><span class="font-weight-light">Titulo:</span> {{ mysingle.nombre }}</p>
             <!-- Estados -->
             <p class="mt-1 font-weight-bold">Estado de la Tarea</p>
-            <p class="text-success text-uppercase font-weight-bold" v-if="mysingle.completed === true">Realizada</p>
-            <!-- <p class="text-warning text-uppercase font-weight-bold" v-else-if="mysingle.completed === 'pendiente'">{{ mysingle.completed }}</p> -->
-            <p class="text-danger text-uppercase font-weight-bold" v-else>No Realizada</p>
+            <p class="text-success text-uppercase font-weight-bold" v-if="mysingle.estado === 'activa'">Activa</p>
+            <p class="text-warning text-uppercase font-weight-bold" v-else-if="mysingle.estado === 'pendiente'">{{ mysingle.estado }}</p>
+            <p class="text-danger text-uppercase font-weight-bold" v-else>Inactiva</p>
             <!-- Fecha de creación y actualización-->
             <p class="font-weight-bold">Tarea creada el<br><small class="badge badge-pill badge-secondary">{{ moment(mysingle.created_at).format("ddd DD / MMM / YYYY [a las] LTS") }}</small></p>
             <p class="font-weight-bold">Ultima vez modificada<br><small class="badge badge-pill badge-secondary">{{ moment(mysingle.updated_at).format("ddd DD / MMM / YYYY [a las] LTS") }}</small></p>
@@ -57,11 +57,11 @@ export default {
         // Actualizar el componente al ser guardado
         onClickUpdate() {
             const params = {
-                nombre: this.mysingle.title,
-                estado: this.mysingle.completed
+                nombre: this.mysingle.nombre,
+                estado: this.mysingle.estado
             };
 
-            axios.put(`https://jsonplaceholder.typicode.com/todos/${this.mysingle.id}`, params).then((response) => {
+            axios.put(`/crear/${this.mysingle.id}`, params).then((response) => {
                 // Finalizamos el modo de edición
                 this.editMode = false;
                 // Obtenemos la data de la respuesta
@@ -72,7 +72,7 @@ export default {
         },
         // Al hacer click eliminar el objecto creado
         onClickDelete() {
-            axios.delete(`https://jsonplaceholder.typicode.com/todos/${this.mysingle.id}`).then(() => {
+            axios.delete(`/crear/${this.mysingle.id}`).then(() => {
                 this.$emit('delete');
             });
         },

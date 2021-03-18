@@ -17,7 +17,7 @@ class CreateTareasTable extends Migration
         {
             $table->id();
             $table->string('nombre', 255);
-            $table->string('descripcion', 500);
+            // $table->string('descripcion', 500);
             $table->string('estado', 255);
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

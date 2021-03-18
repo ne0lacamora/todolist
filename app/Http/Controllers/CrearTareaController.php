@@ -38,7 +38,7 @@ class CrearTareaController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
-            'descripcion' => 'required',
+            // 'descripcion' => 'required',
             'estado' => 'required',
         ]);
 
@@ -57,7 +57,7 @@ class CrearTareaController extends Controller
          * nadie mas puede verlas.
          */
         $tarea->nombre = $request->nombre;
-        $tarea->descripcion = $request->descripcion;
+        // $tarea->descripcion = $request->descripcion;
         $tarea->estado = $request->estado;
         $tarea->user_id = auth()->id();
         $tarea->save();
@@ -76,7 +76,7 @@ class CrearTareaController extends Controller
     {
         $tarea = Tarea::find($id);
         $tarea->nombre = $request->nombre;
-        $tarea->descripcion = $request->descripcion;
+        // $tarea->descripcion = $request->descripcion;
         $tarea->estado = $request->estado;
         $tarea->save();
 
