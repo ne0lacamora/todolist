@@ -2178,6 +2178,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // Moment Js (Date Formatting)
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -59947,7 +59961,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-sm-3 col-md-4 col-lg-4 mt-3" }, [
+  return _c("div", { staticClass: "col-sm-12 col-md-6 col-lg-4 mt-3" }, [
     _c("div", { staticClass: "card border-success" }, [
       _c("div", { staticClass: "card-header bg-success" }, [
         _c("h4", { staticClass: "text-white mb-0" }, [
@@ -60005,11 +60019,97 @@ var render = function() {
           _vm._v("Estado de la Tarea")
         ]),
         _vm._v(" "),
-        _vm.mysingle.estado === "activa"
+        _vm.editMode
+          ? _c(
+              "div",
+              {
+                staticClass: "custom-control custom-radio custom-control-inline"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.mysingle.estado,
+                      expression: "mysingle.estado"
+                    }
+                  ],
+                  staticClass: "custom-control-input",
+                  attrs: {
+                    type: "radio",
+                    id: "tarea_activa",
+                    name: "mysingle_estado",
+                    value: "activa"
+                  },
+                  domProps: { checked: _vm._q(_vm.mysingle.estado, "activa") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.mysingle, "estado", "activa")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "custom-control-label",
+                    attrs: { for: "tarea_activa" }
+                  },
+                  [_vm._v("Activa")]
+                )
+              ]
+            )
+          : _vm.mysingle.estado === "activa"
           ? _c(
               "p",
               { staticClass: "text-success text-uppercase font-weight-bold" },
-              [_vm._v("Activa")]
+              [_vm._v(_vm._s(_vm.mysingle.estado))]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.editMode
+          ? _c(
+              "div",
+              {
+                staticClass: "custom-control custom-radio custom-control-inline"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.mysingle.estado,
+                      expression: "mysingle.estado"
+                    }
+                  ],
+                  staticClass: "custom-control-input",
+                  attrs: {
+                    type: "radio",
+                    id: "tarea_pendiente",
+                    name: "mysingle_estado",
+                    value: "pendiente"
+                  },
+                  domProps: {
+                    checked: _vm._q(_vm.mysingle.estado, "pendiente")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.mysingle, "estado", "pendiente")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "custom-control-label",
+                    attrs: { for: "tarea_pendiente" }
+                  },
+                  [_vm._v("Pendiente")]
+                )
+              ]
             )
           : _vm.mysingle.estado === "pendiente"
           ? _c(
@@ -60017,13 +60117,60 @@ var render = function() {
               { staticClass: "text-warning text-uppercase font-weight-bold" },
               [_vm._v(_vm._s(_vm.mysingle.estado))]
             )
-          : _c(
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.editMode
+          ? _c(
+              "div",
+              {
+                staticClass: "custom-control custom-radio custom-control-inline"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.mysingle.estado,
+                      expression: "mysingle.estado"
+                    }
+                  ],
+                  staticClass: "custom-control-input",
+                  attrs: {
+                    type: "radio",
+                    id: "tarea_inactiva",
+                    name: "mysingle_estado",
+                    value: "inactiva"
+                  },
+                  domProps: {
+                    checked: _vm._q(_vm.mysingle.estado, "inactiva")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.mysingle, "estado", "inactiva")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "custom-control-label",
+                    attrs: { for: "tarea_inactiva" }
+                  },
+                  [_vm._v("Inactiva")]
+                )
+              ]
+            )
+          : _vm.mysingle.estado === "inactiva"
+          ? _c(
               "p",
               { staticClass: "text-danger text-uppercase font-weight-bold" },
-              [_vm._v("Inactiva")]
-            ),
+              [_vm._v(_vm._s(_vm.mysingle.estado))]
+            )
+          : _vm._e(),
         _vm._v(" "),
-        _c("p", { staticClass: "font-weight-bold" }, [
+        _c("p", { staticClass: "font-weight-bold mt-3" }, [
           _vm._v("Tarea creada el"),
           _c("br"),
           _c("small", { staticClass: "badge badge-pill badge-secondary" }, [

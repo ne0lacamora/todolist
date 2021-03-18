@@ -29,12 +29,9 @@ class CrearTareaController extends Controller
         // Here we return the User ID
         return DB::table('tareas')
         ->join('users', 'tareas.user_id', '=', 'users.id')
-        ->select('users.*', 'tareas.*')
+        ->select('users.*', 'tareas.*',)
+        ->where('user_id', auth()->id())
         ->get();
-
-            // dd($tareas);
-
-        // return view('home')->with([$tareas => 'tareas']);
     }
 
     /**
