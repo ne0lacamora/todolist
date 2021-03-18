@@ -59957,9 +59957,9 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "bg-white card-body" }, [
         _c("p", { staticClass: "font-weight-light" }, [
-          _vm._v("ID Usuario: "),
+          _vm._v("Responsable: "),
           _c("span", { staticClass: "font-weight-bold" }, [
-            _vm._v(_vm._s(_vm.mysingle.user_id))
+            _vm._v(_vm._s(_vm.mysingle.name))
           ])
         ]),
         _vm._v(" "),
@@ -59996,9 +59996,9 @@ var render = function() {
             })
           : _c("p", { staticClass: "font-weight-bold" }, [
               _c("span", { staticClass: "font-weight-light" }, [
-                _vm._v("Titulo:")
+                _vm._v("Titulo: ")
               ]),
-              _vm._v(" " + _vm._s(_vm.mysingle.nombre))
+              _vm._v(_vm._s(_vm.mysingle.nombre))
             ]),
         _vm._v(" "),
         _c("p", { staticClass: "mt-1 font-weight-bold" }, [
@@ -60057,7 +60057,7 @@ var render = function() {
           ? _c(
               "button",
               {
-                staticClass: "mr-1 btn btn-success",
+                staticClass: "mr-1 btn btn-warning",
                 on: {
                   click: function($event) {
                     $event.preventDefault()

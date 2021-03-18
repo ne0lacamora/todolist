@@ -7,13 +7,13 @@
         </div>
         <div class="bg-white card-body">
             <!-- ID (Usuario) -->
-            <p class="font-weight-light">ID Usuario: <span class="font-weight-bold">{{ mysingle.user_id  }}</span></p>
+            <p class="font-weight-light">Responsable: <span class="font-weight-bold">{{ mysingle.name }}</span></p>
             <hr>
             <!-- ID (número de la tarea) -->
-            <p class="font-weight-light">Taréa Número: <span class="font-weight-bold">{{ mysingle.id  }}</span></p>
+            <p class="font-weight-light">Taréa Número: <span class="font-weight-bold">{{ mysingle.id }}</span></p>
             <!-- Nombre de la tarea -->
             <input type="text" class="form-control" v-if="editMode" v-model="mysingle.nombre">
-            <p class="font-weight-bold" v-else><span class="font-weight-light">Titulo:</span> {{ mysingle.nombre }}</p>
+            <p class="font-weight-bold" v-else><span class="font-weight-light">Titulo: </span>{{ mysingle.nombre }}</p>
             <!-- Estados -->
             <p class="mt-1 font-weight-bold">Estado de la Tarea</p>
             <p class="text-success text-uppercase font-weight-bold" v-if="mysingle.estado === 'activa'">Activa</p>
@@ -25,7 +25,7 @@
         </div>
         <div class="card-footer bg-success">
             <!-- Acciones -->
-            <button v-if="editMode" class="mr-1 btn btn-success" v-on:click.prevent="onClickUpdate()">Guardar Cambios</button>
+            <button v-if="editMode" class="mr-1 btn btn-warning" v-on:click.prevent="onClickUpdate()">Guardar Cambios</button>
             <button v-else class="mr-1 btn btn-warning" v-on:click.prevent="onClickEdit()">Editar</button>
             <button class="ml-1 btn btn-danger" v-on:click.prevent="onClickDelete()">Eliminar</button>
         </div>

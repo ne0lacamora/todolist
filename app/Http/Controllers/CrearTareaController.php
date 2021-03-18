@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Tarea;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class CrearTareaController extends Controller
 {
@@ -25,7 +27,14 @@ class CrearTareaController extends Controller
     public function index()
     {
         // Here we return the User ID
-        return Tarea::where('user_id', auth()->id())->get();
+        return DB::table('tareas')
+        ->join('users', 'tareas.user_id', '=', 'users.id')
+        ->select('users.*', 'tareas.*')
+        ->get();
+
+            // dd($tareas);
+
+        // return view('home')->with([$tareas => 'tareas']);
     }
 
     /**
