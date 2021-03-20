@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-class CrearTareaController extends Controller
+class TareaController extends Controller
 {
 
     /**
@@ -29,8 +29,9 @@ class CrearTareaController extends Controller
         // Here we return the User ID
         return DB::table('tareas')
         ->join('users', 'tareas.user_id', '=', 'users.id')
-        ->select('users.*', 'tareas.*',)
+        ->select('users.id', 'users.name', 'users.email', 'tareas.*',)
         ->where('user_id', auth()->id())
+        // ->orderBy('updated_at', 'DESC')
         ->get();
     }
 
@@ -44,7 +45,7 @@ class CrearTareaController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
-            // 'descripcion' => 'required',
+            'descripcion' => 'required',
             'estado' => 'required',
         ]);
 
@@ -63,7 +64,7 @@ class CrearTareaController extends Controller
          * nadie mas puede verlas.
          */
         $tarea->nombre = $request->nombre;
-        // $tarea->descripcion = $request->descripcion;
+        $tarea->descripcion = $request->descripcion;
         $tarea->estado = $request->estado;
         $tarea->user_id = auth()->id();
         $tarea->save();
@@ -82,7 +83,7 @@ class CrearTareaController extends Controller
     {
         $tarea = Tarea::find($id);
         $tarea->nombre = $request->nombre;
-        // $tarea->descripcion = $request->descripcion;
+        $tarea->descripcion = $request->descripcion;
         $tarea->estado = $request->estado;
         $tarea->save();
 

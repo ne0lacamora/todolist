@@ -12,7 +12,12 @@
                         <label for="nombre">Nombre de la Tarea</label>
                         <input type="text" name="nombre" class="form-control" placeholder="Ej: Estudiar VueJs" v-model="nombre" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" name="descripcion" rows="5" v-model="descripcion"></textarea>
+                    </div>
                     <!-- Estado de la tarea -->
+                    <!-- COLOR DE LA APP #7012FD -->
                     <div class="form-group">
                         <p>Estado de la tarea</p>
                     </div>
@@ -49,7 +54,7 @@
             return {
                 csrf: document.head.querySelector('meta[name="csrf-token"]').content,
                 nombre: "",
-                // responsable: "",
+                descripcion: "",
                 estado: ""
             }
         },
@@ -59,15 +64,17 @@
                 // Parametros (datos) a ser obtenidos
                 const params = {
                     nombre: this.nombre,
+                    descripcion: this.descripcion,
                     estado: this.estado,
                 };
 
                 // Vaciamos los campos al enviar los valores
                 this.nombre = "";
+                this.descripcion = "";
                 this.estado = "";
 
                 // Metodo post para enviar los datos y entonces generar/obtener una respuesta
-                axios.post("/crear", params).then((response) => {
+                axios.post("/tarea", params).then((response) => {
                     // Obtenemos el objecto a partir de la respuesta del servidor
                     const tarea = response.data;
 

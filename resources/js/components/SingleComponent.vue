@@ -7,13 +7,19 @@
         </div>
         <div class="bg-white card-body">
             <!-- ID (Usuario) -->
-            <p class="font-weight-light">Responsable: <span class="font-weight-bold">{{ mysingle.name }}</span></p>
+            <p class="font-weight-light">Usuario: <span class="font-weight-bold">{{ mysingle.name }}</span></p>
             <hr>
             <!-- ID (número de la tarea) -->
             <p class="font-weight-light">Taréa Número: <span class="font-weight-bold">{{ mysingle.id }}</span></p>
             <!-- Nombre de la tarea -->
             <input type="text" class="form-control" v-if="editMode" v-model="mysingle.nombre">
             <p class="font-weight-bold" v-else><span class="font-weight-light">Titulo: </span>{{ mysingle.nombre }}</p>
+            <!-- Descripcion -->
+            <div class="mb-3" v-if="editMode">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" name="mitarea_descripcion" id="descripcion" rows="5" v-model="mysingle.descripcion"></textarea>
+            </div>
+            <p class="bg-warning py-1 px-2 rounded-sm" v-else>{{ mysingle.descripcion }}</p>
             <!-- Estados -->
             <p class="mt-1 font-weight-bold">Estado de la Tarea</p>
             <div class="custom-control custom-radio custom-control-inline" v-if="editMode">
@@ -72,10 +78,11 @@ export default {
         onClickUpdate() {
             const params = {
                 nombre: this.mysingle.nombre,
+                descripcion: this.mysingle.descripcion,
                 estado: this.mysingle.estado
             };
 
-            axios.put(`/crear/${this.mysingle.id}`, params).then((response) => {
+            axios.put(`/tarea/${this.mysingle.id}`, params).then((response) => {
                 // Finalizamos el modo de edición
                 this.editMode = false;
                 // Obtenemos la data de la respuesta
@@ -86,7 +93,7 @@ export default {
         },
         // Al hacer click eliminar el objecto creado
         onClickDelete() {
-            axios.delete(`/crear/${this.mysingle.id}`).then(() => {
+            axios.delete(`/tarea/${this.mysingle.id}`).then(() => {
                 this.$emit('delete');
             });
         },

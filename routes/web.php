@@ -28,4 +28,4 @@ Route::get('/crear-tarea', function() {
 })->name('crear-tarea')->middleware('auth');
 
 // API (CRUD)
-Route::apiResource('crear', 'CrearTareaController');
+Route::apiResource('tarea', 'TareaController');

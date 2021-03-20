@@ -30,7 +30,7 @@
 
         // Function
         mounted() {
-            axios.get("/crear").then((response) => {
+            axios.get("/tarea").then((response) => {
                 this.listaTareas = response.data;
             });
         },

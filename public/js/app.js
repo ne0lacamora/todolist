@@ -2000,12 +2000,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       csrf: document.head.querySelector('meta[name="csrf-token"]').content,
       nombre: "",
-      // responsable: "",
+      descripcion: "",
       estado: ""
     };
   },
@@ -2016,13 +2021,15 @@ __webpack_require__.r(__webpack_exports__);
       // Parametros (datos) a ser obtenidos
       var params = {
         nombre: this.nombre,
+        descripcion: this.descripcion,
         estado: this.estado
       }; // Vaciamos los campos al enviar los valores
 
       this.nombre = "";
+      this.descripcion = "";
       this.estado = ""; // Metodo post para enviar los datos y entonces generar/obtener una respuesta
 
-      axios.post("/crear", params).then(function (response) {
+      axios.post("/tarea", params).then(function (response) {
         // Obtenemos el objecto a partir de la respuesta del servidor
         var tarea = response.data; // Emitir (evento new) de la nueva tarea
 
@@ -2063,7 +2070,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/crear").then(function (response) {
+    axios.get("/tarea").then(function (response) {
       _this.listaTareas = response.data;
     });
   }
@@ -2112,7 +2119,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/crear").then(function (response) {
+    axios.get("/tarea").then(function (response) {
       _this.listaTareas = response.data;
     });
   },
@@ -2192,6 +2199,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 // Moment Js (Date Formatting)
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2215,9 +2228,10 @@ __webpack_require__.r(__webpack_exports__);
 
       var params = {
         nombre: this.mysingle.nombre,
+        descripcion: this.mysingle.descripcion,
         estado: this.mysingle.estado
       };
-      axios.put("/crear/".concat(this.mysingle.id), params).then(function (response) {
+      axios.put("/tarea/".concat(this.mysingle.id), params).then(function (response) {
         // Finalizamos el modo de edición
         _this.editMode = false; // Obtenemos la data de la respuesta
 
@@ -2230,7 +2244,7 @@ __webpack_require__.r(__webpack_exports__);
     onClickDelete: function onClickDelete() {
       var _this2 = this;
 
-      axios["delete"]("/crear/".concat(this.mysingle.id)).then(function () {
+      axios["delete"]("/tarea/".concat(this.mysingle.id)).then(function () {
         _this2.$emit('delete');
       });
     }
@@ -2275,7 +2289,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/crear").then(function (response) {
+    axios.get("/tarea").then(function (response) {
       _this.listaTareas = response.data;
     });
   },
@@ -2353,6 +2367,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 // Moment Js (Date Formatting)
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2362,7 +2381,11 @@ __webpack_require__.r(__webpack_exports__);
       // Retornar el formato de fecha de moment
       moment: moment__WEBPACK_IMPORTED_MODULE_0___default.a,
       // Determinar si el componente se esta editando o no
-      editMode: false
+      editMode: false,
+      // Clases de la tarjeta basada en el estado de la tarea.
+      isActive: this.mitarea.estado === 'activa',
+      isPending: this.mitarea.estado === 'pendiente',
+      isInactive: this.mitarea.estado === 'inactiva'
     };
   },
   methods: {
@@ -2376,9 +2399,10 @@ __webpack_require__.r(__webpack_exports__);
 
       var params = {
         nombre: this.mitarea.nombre,
+        descripcion: this.mitarea.descripcion,
         estado: this.mitarea.estado
       };
-      axios.put("/crear/".concat(this.mitarea.id), params).then(function (response) {
+      axios.put("/tarea/".concat(this.mitarea.id), params).then(function (response) {
         // Finalizamos el modo de edición
         _this.editMode = false; // Data
 
@@ -2391,7 +2415,7 @@ __webpack_require__.r(__webpack_exports__);
     onClickDelete: function onClickDelete() {
       var _this2 = this;
 
-      axios["delete"]("/crear/".concat(this.mitarea.id)).then(function () {
+      axios["delete"]("/tarea/".concat(this.mitarea.id)).then(function () {
         _this2.$emit('delete');
       });
     }
@@ -59676,6 +59700,36 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
+              _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  { staticClass: "form-label", attrs: { for: "descripcion" } },
+                  [_vm._v("Descripción")]
+                ),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.descripcion,
+                      expression: "descripcion"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "descripcion", rows: "5" },
+                  domProps: { value: _vm.descripcion },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.descripcion = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
               _vm._m(0),
               _vm._v(" "),
               _c(
@@ -59971,7 +60025,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "bg-white card-body" }, [
         _c("p", { staticClass: "font-weight-light" }, [
-          _vm._v("Responsable: "),
+          _vm._v("Usuario: "),
           _c("span", { staticClass: "font-weight-bold" }, [
             _vm._v(_vm._s(_vm.mysingle.name))
           ])
@@ -60013,6 +60067,44 @@ var render = function() {
                 _vm._v("Titulo: ")
               ]),
               _vm._v(_vm._s(_vm.mysingle.nombre))
+            ]),
+        _vm._v(" "),
+        _vm.editMode
+          ? _c("div", { staticClass: "mb-3" }, [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "descripcion" } },
+                [_vm._v("Descripción")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mysingle.descripcion,
+                    expression: "mysingle.descripcion"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  name: "mitarea_descripcion",
+                  id: "descripcion",
+                  rows: "5"
+                },
+                domProps: { value: _vm.mysingle.descripcion },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.mysingle, "descripcion", $event.target.value)
+                  }
+                }
+              })
+            ])
+          : _c("p", { staticClass: "bg-warning py-1 px-2 rounded-sm" }, [
+              _vm._v(_vm._s(_vm.mysingle.descripcion))
             ]),
         _vm._v(" "),
         _c("p", { staticClass: "mt-1 font-weight-bold" }, [
@@ -60325,275 +60417,357 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "mt-3 card border-success" }, [
-    _c("div", { staticClass: "card-header bg-success" }, [
-      _c("h4", { staticClass: "text-white mb-0" }, [
-        _vm._v(_vm._s(_vm.mitarea.nombre))
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "bg-white card-body" }, [
-      _c("p", { staticClass: "font-weight-light" }, [
-        _vm._v("Taréa Número: "),
-        _c("span", { staticClass: "font-weight-bold" }, [
-          _vm._v(_vm._s(_vm.mitarea.id))
-        ])
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _vm.editMode
-        ? _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.mitarea.nombre,
-                expression: "mitarea.nombre"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.mitarea.nombre },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.mitarea, "nombre", $event.target.value)
-              }
-            }
-          })
-        : _c("p", { staticClass: "font-weight-bold" }, [
-            _vm._v(_vm._s(_vm.mitarea.nombre))
-          ]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("p", { staticClass: "mt-1 font-weight-bold" }, [
-        _vm._v("Estado de la Tarea")
-      ]),
-      _vm._v(" "),
-      _vm.editMode
-        ? _c(
-            "div",
-            {
-              staticClass: "custom-control custom-radio custom-control-inline"
-            },
-            [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.mitarea.estado,
-                    expression: "mitarea.estado"
-                  }
-                ],
-                staticClass: "custom-control-input",
-                attrs: {
-                  type: "radio",
-                  id: "tarea_activa",
-                  name: "mitarea_estado",
-                  value: "activa"
-                },
-                domProps: { checked: _vm._q(_vm.mitarea.estado, "activa") },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(_vm.mitarea, "estado", "activa")
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "custom-control-label",
-                  attrs: { for: "tarea_activa" }
-                },
-                [_vm._v("Activa")]
-              )
-            ]
-          )
-        : _vm.mitarea.estado === "activa"
-        ? _c(
-            "p",
-            { staticClass: "text-success text-uppercase font-weight-bold" },
-            [_vm._v(_vm._s(_vm.mitarea.estado))]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.editMode
-        ? _c(
-            "div",
-            {
-              staticClass: "custom-control custom-radio custom-control-inline"
-            },
-            [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.mitarea.estado,
-                    expression: "mitarea.estado"
-                  }
-                ],
-                staticClass: "custom-control-input",
-                attrs: {
-                  type: "radio",
-                  id: "tarea_pendiente",
-                  name: "mitarea_estado",
-                  value: "pendiente"
-                },
-                domProps: { checked: _vm._q(_vm.mitarea.estado, "pendiente") },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(_vm.mitarea, "estado", "pendiente")
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "custom-control-label",
-                  attrs: { for: "tarea_pendiente" }
-                },
-                [_vm._v("Pendiente")]
-              )
-            ]
-          )
-        : _vm.mitarea.estado === "pendiente"
-        ? _c(
-            "p",
-            { staticClass: "text-warning text-uppercase font-weight-bold" },
-            [_vm._v(_vm._s(_vm.mitarea.estado))]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.editMode
-        ? _c(
-            "div",
-            {
-              staticClass: "custom-control custom-radio custom-control-inline"
-            },
-            [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.mitarea.estado,
-                    expression: "mitarea.estado"
-                  }
-                ],
-                staticClass: "custom-control-input",
-                attrs: {
-                  type: "radio",
-                  id: "tarea_inactiva",
-                  name: "mitarea_estado",
-                  value: "inactiva"
-                },
-                domProps: { checked: _vm._q(_vm.mitarea.estado, "inactiva") },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(_vm.mitarea, "estado", "inactiva")
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "custom-control-label",
-                  attrs: { for: "tarea_inactiva" }
-                },
-                [_vm._v("Inactiva")]
-              )
-            ]
-          )
-        : _vm.mitarea.estado === "inactiva"
-        ? _c(
-            "p",
-            { staticClass: "text-danger text-uppercase font-weight-bold" },
-            [_vm._v(_vm._s(_vm.mitarea.estado))]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c("p", { staticClass: "font-weight-bold mt-3" }, [
-        _vm._v("Tarea creada el"),
-        _c("br"),
-        _c("small", { staticClass: "badge badge-pill badge-secondary" }, [
-          _vm._v(
-            _vm._s(
-              _vm
-                .moment(_vm.mitarea.created_at)
-                .format("ddd DD / MMM / YYYY [a las] LTS")
-            )
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "font-weight-bold" }, [
-        _vm._v("Última vez modificada"),
-        _c("br"),
-        _c("small", { staticClass: "badge badge-pill badge-secondary" }, [
-          _vm._v(
-            _vm._s(
-              _vm
-                .moment(_vm.mitarea.updated_at)
-                .format("ddd DD / MMM / YYYY [a las] LTS")
-            )
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "card-footer bg-success" }, [
-      _vm.editMode
-        ? _c(
-            "button",
-            {
-              staticClass: "mr-1 btn btn-warning",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.onClickUpdate()
-                }
-              }
-            },
-            [_vm._v("Guardar Cambios")]
-          )
-        : _c(
-            "button",
-            {
-              staticClass: "mr-1 btn btn-warning",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.onClickEdit()
-                }
-              }
-            },
-            [_vm._v("Editar")]
-          ),
-      _vm._v(" "),
+  return _c(
+    "div",
+    {
+      staticClass: "mt-3 card",
+      class: {
+        "bg-success border-success": _vm.isActive,
+        "bg-warning border-warning": _vm.isPending,
+        "bg-danger border-danger": _vm.isInactive
+      }
+    },
+    [
       _c(
-        "button",
+        "div",
         {
-          staticClass: "ml-1 btn btn-danger",
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.onClickDelete()
-            }
+          staticClass: "card-header",
+          class: {
+            "bg-success": _vm.isActive,
+            "bg-warning": _vm.isPending,
+            "bg-danger": _vm.isInactive
           }
         },
-        [_vm._v("Eliminar")]
+        [
+          _c("h4", { staticClass: "text-white mb-0" }, [
+            _vm._v(_vm._s(_vm.mitarea.nombre))
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "bg-white card-body" }, [
+        _c("p", { staticClass: "font-weight-light" }, [
+          _vm._v("Taréa Número: "),
+          _c("span", { staticClass: "font-weight-bold" }, [
+            _vm._v(_vm._s(_vm.mitarea.id))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _vm.editMode
+          ? _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.mitarea.nombre,
+                  expression: "mitarea.nombre"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.mitarea.nombre },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.mitarea, "nombre", $event.target.value)
+                }
+              }
+            })
+          : _c("p", { staticClass: "font-weight-bold" }, [
+              _vm._v(_vm._s(_vm.mitarea.nombre))
+            ]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _vm.editMode
+          ? _c("div", { staticClass: "mb-3" }, [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "descripcion" } },
+                [_vm._v("Descripción")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.mitarea.descripcion,
+                    expression: "mitarea.descripcion"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  name: "mitarea_descripcion",
+                  id: "descripcion",
+                  rows: "5"
+                },
+                domProps: { value: _vm.mitarea.descripcion },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.mitarea, "descripcion", $event.target.value)
+                  }
+                }
+              })
+            ])
+          : _c("p", { staticClass: "bg-warning py-1 px-2 rounded-sm" }, [
+              _vm._v(_vm._s(_vm.mitarea.descripcion))
+            ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "mt-1 font-weight-bold" }, [
+          _vm._v("Estado de la Tarea")
+        ]),
+        _vm._v(" "),
+        _vm.editMode
+          ? _c(
+              "div",
+              {
+                staticClass: "custom-control custom-radio custom-control-inline"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.mitarea.estado,
+                      expression: "mitarea.estado"
+                    }
+                  ],
+                  staticClass: "custom-control-input",
+                  attrs: {
+                    type: "radio",
+                    id: "tarea_activa",
+                    name: "mitarea_estado",
+                    value: "activa"
+                  },
+                  domProps: { checked: _vm._q(_vm.mitarea.estado, "activa") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.mitarea, "estado", "activa")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "custom-control-label",
+                    attrs: { for: "tarea_activa" }
+                  },
+                  [_vm._v("Activa")]
+                )
+              ]
+            )
+          : _vm.mitarea.estado === "activa"
+          ? _c(
+              "p",
+              { staticClass: "text-success text-uppercase font-weight-bold" },
+              [_vm._v(_vm._s(_vm.mitarea.estado))]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.editMode
+          ? _c(
+              "div",
+              {
+                staticClass: "custom-control custom-radio custom-control-inline"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.mitarea.estado,
+                      expression: "mitarea.estado"
+                    }
+                  ],
+                  staticClass: "custom-control-input",
+                  attrs: {
+                    type: "radio",
+                    id: "tarea_pendiente",
+                    name: "mitarea_estado",
+                    value: "pendiente"
+                  },
+                  domProps: {
+                    checked: _vm._q(_vm.mitarea.estado, "pendiente")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.mitarea, "estado", "pendiente")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "custom-control-label",
+                    attrs: { for: "tarea_pendiente" }
+                  },
+                  [_vm._v("Pendiente")]
+                )
+              ]
+            )
+          : _vm.mitarea.estado === "pendiente"
+          ? _c(
+              "p",
+              { staticClass: "text-warning text-uppercase font-weight-bold" },
+              [_vm._v(_vm._s(_vm.mitarea.estado))]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.editMode
+          ? _c(
+              "div",
+              {
+                staticClass: "custom-control custom-radio custom-control-inline"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.mitarea.estado,
+                      expression: "mitarea.estado"
+                    }
+                  ],
+                  staticClass: "custom-control-input",
+                  attrs: {
+                    type: "radio",
+                    id: "tarea_inactiva",
+                    name: "mitarea_estado",
+                    value: "inactiva"
+                  },
+                  domProps: { checked: _vm._q(_vm.mitarea.estado, "inactiva") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.mitarea, "estado", "inactiva")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "custom-control-label",
+                    attrs: { for: "tarea_inactiva" }
+                  },
+                  [_vm._v("Inactiva")]
+                )
+              ]
+            )
+          : _vm.mitarea.estado === "inactiva"
+          ? _c(
+              "p",
+              { staticClass: "text-danger text-uppercase font-weight-bold" },
+              [_vm._v(_vm._s(_vm.mitarea.estado))]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("p", { staticClass: "font-weight-bold mt-3" }, [
+          _vm._v("Tarea creada el"),
+          _c("br"),
+          _c("small", { staticClass: "badge badge-pill badge-secondary" }, [
+            _vm._v(
+              _vm._s(
+                _vm
+                  .moment(_vm.mitarea.created_at)
+                  .format("ddd DD / MMM / YYYY [a las] LTS")
+              )
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "font-weight-bold" }, [
+          _vm._v("Última vez modificada"),
+          _c("br"),
+          _c("small", { staticClass: "badge badge-pill badge-secondary" }, [
+            _vm._v(
+              _vm._s(
+                _vm
+                  .moment(_vm.mitarea.updated_at)
+                  .format("ddd DD / MMM / YYYY [a las] LTS")
+              )
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "card-footer",
+          class: {
+            "bg-success": _vm.isActive,
+            "bg-warning": _vm.isPending,
+            "bg-danger": _vm.isInactive
+          }
+        },
+        [
+          _vm.editMode
+            ? _c(
+                "button",
+                {
+                  staticClass: "mr-1 btn btn-warning",
+                  class: { "btn-light": _vm.isPending },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.onClickUpdate()
+                    }
+                  }
+                },
+                [_vm._v("Guardar Cambios")]
+              )
+            : _c(
+                "button",
+                {
+                  staticClass: "mr-1 btn btn-warning",
+                  class: {
+                    "btn-light": _vm.isPending,
+                    "btn-warning": _vm.isInactive
+                  },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.onClickEdit()
+                    }
+                  }
+                },
+                [_vm._v("Editar")]
+              ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "ml-1 btn btn-danger",
+              class: {
+                "btn-danger": _vm.isPending,
+                "btn-outline-light": _vm.isInactive
+              },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.onClickDelete()
+                }
+              }
+            },
+            [_vm._v("Eliminar")]
+          )
+        ]
       )
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
