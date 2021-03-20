@@ -63,7 +63,6 @@
                 moment: moment,
                 // Determinar si el componente se esta editando o no
                 editMode: false,
-
                 // Clases de la tarjeta basada en el estado de la tarea.
                 isActive: this.mitarea.estado === 'activa',
                 isPending: this.mitarea.estado === 'pendiente',
