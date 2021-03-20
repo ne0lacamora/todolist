@@ -12,5 +12,5 @@
 <h6>php artisan key:generate --ansi</h6>
 <p>Migrar todo a la base de datos (de su preferencia)</p>
 <h6>php artisan migrate</h6>
-<p>De ser necesario realizar una migración con seeds para tests (pruebas).</p>
+<p>De ser necesario realizar una migración fresca con seeds para tests (pruebas).</p>
 <h6>php artisan migrate:fresh --seed</h6>
