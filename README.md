@@ -10,6 +10,6 @@
 <h6>npm run dev</h6>
 <p>Comando de seguridad importante (Razones de seguridad)</p>
 <h6>php artisan key:generate --ansi</h6>
-<h6>Migrar todo a la base de datos (de su preferencia)</h6>
+<p>Migrar todo a la base de datos (de su preferencia)</p>
 <p>De ser necesario realizar una migración con seeds para tests (pruebas).</p>
 <h6>php artisan migrate:fresh --seed</h6>
