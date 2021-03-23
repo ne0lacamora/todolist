@@ -5,16 +5,16 @@ Esta aplicación esta creada con Laravel v7 y VueJS v2+ y esta basado en un TODO
 Incluye sistema de inicio de sesion, cada tarea se asigna automaticamente al usuario que la creo
 Para hacer que funcione (realizar los siguientes pasos)
 ~~~
-1. ___ git clone https://github.com/miguellista10/todolist.git ___
+1. git clone https://github.com/miguellista10/todolist.git
 > Luego
-2. ___ composer install ___
+2. composer install
 > Luego
-3. ___ npm install ___
+3. npm install
 > Luego
-4. ___ npm run dev ___
+4. npm run dev
 > Comando de seguridad importante (Razones de seguridad)
-4. ___ php artisan key:generate ___
+4. php artisan key:generate
 > Migrar todo a la base de datos (de su preferencia)
-5. ___ php artisan migrate ___
+5. php artisan migrate
 > De ser necesario realizar una migración fresca con seeds para tests (pruebas).
-6. ___ php artisan migrate:fresh --seed ___
+6. php artisan migrate:fresh --seed
