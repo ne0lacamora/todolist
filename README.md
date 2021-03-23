@@ -1,9 +1,9 @@
 # Laravel TODO list APP
 ### Nueva version muy pronto
 #### Esta aplicación esta creada con Laravel v7 y VueJS v2+
-Este proyecto esta basado en un TODO (Tarea para hacer)
+##### Este proyecto esta basado en un TODO (Tarea para hacer)
 Incluye sistema de inicio de sesion, cada tarea se asigna automaticamente al usuario que la creo
-Para hacer que funcione (realizar los siguientes pasos)
+##### Para hacer que funcione (realizar los siguientes pasos)
 1. composer install
 Luego
 2. npm install
