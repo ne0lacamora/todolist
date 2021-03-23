@@ -4,11 +4,13 @@
 ##### Este proyecto esta basado en un TODO (Tarea para hacer)
 Incluye sistema de inicio de sesion, cada tarea se asigna automaticamente al usuario que la creo
 ##### Para hacer que funcione (realizar los siguientes pasos)
-1. composer install
+1. git clone https://github.com/miguellista10/todolist.git
 > Luego
-2. npm install
-> Y por ultimo pero no menos importante
-3. npm run dev
+2. composer install
+> Luego
+3. npm install
+> Luego
+4. npm run dev
 > Comando de seguridad importante (Razones de seguridad)
 4. php artisan key:generate
 > Migrar todo a la base de datos (de su preferencia)
