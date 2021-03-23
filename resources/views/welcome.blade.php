@@ -11,13 +11,9 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="row">
-                <div class="col-sm-12">
-                    <h2 class="text-capitalize text-dark">Últimas tareas creadas por los Usuarios</h2>
-                    <p class="text-black-50 lead">Estas son las ultimas tareas creadas por nuestros usuarios.</p>
-                </div>
-            </div> --}}
-            {{-- <index-component></index-component> --}}
         </div>
     </header>
+    <main class="container-fluid">
+        <tareas></tareas>
+    </main>
 @endsection

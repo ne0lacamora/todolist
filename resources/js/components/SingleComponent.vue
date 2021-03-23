@@ -1,8 +1,8 @@
 <template>
 <!-- Single Tarea -->
 <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
-    <div class="card border-success">
-        <div class="card-header bg-success">
+    <div class="card" v-bind:class="{ 'bg-success border-success': isActive, 'bg-warning border-warning': isPending, 'bg-danger border-danger': isInactive  }">
+        <div class="card-header border-0" v-bind:class="{ 'bg-success': isActive, 'bg-warning': isPending, 'bg-danger': isInactive  }">
             <h4 class="text-white mb-0">{{ mysingle.nombre }}</h4>
         </div>
         <div class="bg-white card-body">
@@ -19,7 +19,7 @@
                 <label for="descripcion" class="form-label">Descripción</label>
                 <textarea class="form-control" name="mitarea_descripcion" id="descripcion" rows="5" v-model="mysingle.descripcion"></textarea>
             </div>
-            <p class="bg-warning py-1 px-2 rounded-sm" v-else>{{ mysingle.descripcion }}</p>
+            <p class="rounded-sm" v-else>{{ mysingle.descripcion }}</p>
             <!-- Estados -->
             <p class="mt-1 font-weight-bold">Estado de la Tarea</p>
             <div class="custom-control custom-radio custom-control-inline" v-if="editMode">
@@ -43,11 +43,16 @@
             <p class="font-weight-bold mt-3">Tarea creada el<br><small class="badge badge-pill badge-secondary">{{ moment(mysingle.created_at).format("ddd DD / MMM / YYYY [a las] LTS") }}</small></p>
             <p class="font-weight-bold">Ultima vez modificada<br><small class="badge badge-pill badge-secondary">{{ moment(mysingle.updated_at).format("ddd DD / MMM / YYYY [a las] LTS") }}</small></p>
         </div>
-        <div class="card-footer bg-success">
+        <div class="card-footer border-0" v-bind:class="{ 'bg-success': isActive, 'bg-warning': isPending, 'bg-danger': isInactive  }">
             <!-- Acciones -->
-            <button v-if="editMode" class="mr-1 btn btn-warning" v-on:click.prevent="onClickUpdate()">Guardar Cambios</button>
-            <button v-else class="mr-1 btn btn-warning" v-on:click.prevent="onClickEdit()">Editar</button>
-            <button class="ml-1 btn btn-danger" v-on:click.prevent="onClickDelete()">Eliminar</button>
+            <div class="" v-if="editMode">
+                <button class="mr-1 btn btn-warning" v-bind:class="{'btn-light': isPending}" v-on:click.prevent="onClickUpdate()">Guardar Cambios</button>
+                <button class="mr-1 btn btn-secondary" v-on:click.prevent="onClickCancel()">Cancelar</button>
+            </div>
+            <div v-else>
+                <button class="mr-1 btn btn-warning" v-bind:class="{ 'btn-light': isPending, 'btn-warning': isInactive  }" v-on:click.prevent="onClickEdit()">Editar</button>
+                <button class="ml-1 btn btn-danger" v-bind:class="{ 'btn-danger': isPending, 'btn-outline-light': isInactive  }" v-on:click.prevent="onClickDelete()">Eliminar</button>
+            </div>
         </div>
     </div>
 </div>
@@ -65,7 +70,11 @@ export default {
             // Retornar el formato de fecha de moment
             moment: moment,
             // Determinar si el componente se esta editando o no
-            editMode: false
+            editMode: false,
+            // Clases de la tarjeta basada en el estado de la tarea.
+            isActive: this.mysingle.estado === 'activa',
+            isPending: this.mysingle.estado === 'pendiente',
+            isInactive: this.mysingle.estado === 'inactiva',
         };
     },
 
