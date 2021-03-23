@@ -5,13 +5,13 @@
 Incluye sistema de inicio de sesion, cada tarea se asigna automaticamente al usuario que la creo
 ##### Para hacer que funcione (realizar los siguientes pasos)
 1. composer install
-Luego
+- Luego
 2. npm install
-Y por ultimo pero no menos importante
+- Y por ultimo pero no menos importante
 3. npm run dev
-Comando de seguridad importante (Razones de seguridad)
+- Comando de seguridad importante (Razones de seguridad)
 4. php artisan key:generate
-Migrar todo a la base de datos (de su preferencia)
+- Migrar todo a la base de datos (de su preferencia)
 5. php artisan migrate
-De ser necesario realizar una migración fresca con seeds para tests (pruebas).
+- De ser necesario realizar una migración fresca con seeds para tests (pruebas).
 6. php artisan migrate:fresh --seed
