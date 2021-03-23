@@ -3,13 +3,13 @@
         <div class="mb-4 col-sm-12">
             <h2>Lista de Tareas</h2>
         </div>
-        <single-component
+        <usuario-component
         v-for="(single, index) in listaTareas"
         :key="single.id"
         :mysingle="single"
         @update="updateTarea(index, ...arguments)"
         @delete="deleteTarea(index)">
-        </single-component>
+        </usuario-component>
     </div>
 </template>
 <script>

@@ -4,13 +4,13 @@
         <div class="order-2 order-md-1 col-md-4 lista-de-tareas">
             <h3>Tareas Recientemente Creadas</h3>
             <hr>
-            <tarea-component
+            <recientes-component
             v-for="(tarea, index) in listaTareas"
             :key="tarea.id"
             :mitarea="tarea"
             @update="updateTarea(index, ...arguments)"
             @delete="deleteTarea(index)">
-            </tarea-component>
+            </recientes-component>
         </div>
         <!-- Crear nueva tarea -->
         <crear-component @new="addTarea">

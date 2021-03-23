@@ -30,7 +30,7 @@
                 <div class="collapse navbar-collapse" id="topNavBar">
                     <!-- Search Bar -->
                     <div class="ml-auto w-50">
-                        <searchbar></searchbar>
+                        <barra-busqueda-component></barra-busqueda-component>
                     </div>
                     <!-- Right Side Of Navbar -->
                     <ul class="ml-auto navbar-nav">

@@ -21,12 +21,12 @@ import store from './store/index';
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('mis-tareas-component', require('./components/MisTareasComponent.vue').default);
+Vue.component('lista-recientes-component', require('./components/ListaRecientesComponent.vue').default);
 Vue.component('crear-component', require('./components/CrearComponent.vue').default);
-Vue.component('tarea-component', require('./components/TareaComponent.vue').default);
-Vue.component('single-list-component', require('./components/SingleListComponent.vue').default);
-Vue.component('single-component', require('./components/SingleComponent.vue').default);
-Vue.component('searchbar', require('./components/SearchbarComponent.vue').default);
+Vue.component('recientes-component', require('./components/RecientesComponent.vue').default);
+Vue.component('lista-usuarios-component', require('./components/ListaUsuariosComponent.vue').default);
+Vue.component('usuario-component', require('./components/UsuarioComponent.vue').default);
+Vue.component('barra-busqueda-component', require('./components/BarraBusquedaComponent.vue').default);
 Vue.component('index', require('./components/IndexComponent.vue').default);
 Vue.component('tareas', require('./components/TareasComponent.vue').default);
 

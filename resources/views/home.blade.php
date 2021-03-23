@@ -12,8 +12,8 @@
                 </div>
             </div>
             <!-- Lista general de tarea -->
-            <single-list-component>
-            </single-list-component>
+            <lista-usuarios-component>
+            </lista-usuarios-component>
         </div>
     </section>
 @endsection

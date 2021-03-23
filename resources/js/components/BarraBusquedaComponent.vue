@@ -11,7 +11,7 @@
 </template>
 <script>
 export default {
-    name: "SearchbarComponent",
+    name: "BarraBusquedaComponent",
     data() {
         return {
             query: "",

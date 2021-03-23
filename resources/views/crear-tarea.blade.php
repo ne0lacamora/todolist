@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <mis-tareas-component>
-        </mis-tareas-component>
+        <lista-recientes-component>
+        </lista-recientes-component>
     </div>
 @endsection
